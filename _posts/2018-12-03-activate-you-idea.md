@@ -95,4 +95,4 @@ ps：上面的`licenseeName`,`assigneeName`:,`assigneeEmail`:,`licenseRestrictio
 
 关注我的公众号：
 
-![](img/qrcode.jpg)
+![](../img/qrcode.jpg)
