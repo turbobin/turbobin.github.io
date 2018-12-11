@@ -7,7 +7,7 @@ description: "Chaos is a ladder."
 keyword: "turbobin, 如暘, Python, Java, Linux"
 url: "http://turbobin.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "git@github.com:turbobin/turbobin.github.io.git" # you code repository
+github_repo: "https://github.com/turbobin/turbobin.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -19,7 +19,7 @@ sidebar-avatar: /img/turbobin.jpg      # use absolute URL, seeing it's used in b
 # SNS settings
 RSS: false
 # weibo_username:     turbobin
-zhihu_username:     turbobin
+# zhihu_username:     turbobin
 github_username:    turbobin
 #facebook_username:  baiying.qiu.7
 #jianshu_username:   e71990ada2fd
@@ -62,8 +62,8 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
+  clientID: c498bf7a65f81a1e4b06                            #生成的clientID,生成：https://github.com/settings/applications/new
+  clientSecret: f752ac6b3bd874d0e3dd6932b5d484d4dbe4e3f3    #生成的clientSecret
   repo: turbobin.github.io    #仓库名称
   owner: turbobin    #github用户名
   admin: turbobin
