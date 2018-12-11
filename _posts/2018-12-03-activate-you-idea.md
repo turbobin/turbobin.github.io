@@ -16,10 +16,11 @@ Jetbrains 公司的全家桶越来越流行，他们家的集成工具体验越�
 
 # Pycharm 2018.1激活
 
-1. 下载 http://idea.lanyus.com/jar/JetbrainsCrack-3.1-release-enc.jar 并将 JetbrainsCrack-3.1-release-enc.jar 放置到 D盘根目录。
+1. 下载 [http://idea.lanyus.com/jar/JetbrainsCrack-3.1-release-enc.jar ](http://idea.lanyus.com/jar/JetbrainsCrack-3.1-release-enc.jar )并将 `JetbrainsCrack-3.1-release-enc.jar` 放置到 D盘根目录。
 
-2. 在 Pycharm安装目录的\bin目录下找到 pycharm.exe.vmoptions 和 pycharm64.exe.vmoptions ，以文本格式打开并同时在两个文件最后追加  
-`-javaagent:D:\JetbrainsCrack-3.1-release-enc.jar`，然后保存。 
+2. 在 Pycharm安装目录的\bin目录下找到 `pycharm.exe.vmoptions` 和 `pycharm64.exe.vmoptions` ，以文本格式打开并同时在两个文件最后追加  
+`-javaagent:D:\JetbrainsCrack-3.1-release-enc.jar`
+然后保存。 
 
 3. 启动Pycharm, 选择激活码激活方式，复制以下内容：
 ```
@@ -54,10 +55,11 @@ ThisCrackLicenseId-{
 # IntelliJ IDEA 2018.3激活
 
 步骤和上面差不多，有一点点不一样.
-1. 下载 http://idea.lanyus.com/jar/JetbrainsIdesCrack-3.4-release-enc.jar ，并将JetbrainsIdesCrack-3.4-release-enc.jar放置到 D盘根目录。
+1. 下载 [http://idea.lanyus.com/jar/JetbrainsIdesCrack-3.4-release-enc.jar](http://idea.lanyus.com/jar/JetbrainsIdesCrack-3.4-release-enc.jar) ，并将`JetbrainsIdesCrack-3.4-release-enc.jar`放置到 D盘根目录。
 
-2. 在IntelliJ IDEA 2018.3\bin目录下找到idea.exe.vmoptions和idea64.exe.vmoptions,以文本格式打开并同时在两个文件最后追加
-`-javaagent:D:\JetbrainsIdesCrack-3.4-release-enc.jar`，然后保存。
+2. 在IntelliJ IDEA 2018.3\bin 目录下找到`idea.exe.vmoptions`和`idea64.exe.vmoptions`,以文本格式打开并同时在两个文件最后追加内容
+`-javaagent:D:\JetbrainsIdesCrack-3.4-release-enc.jar`
+然后保存。
 
 3. 启动IntelliJ IDEA，选择激活码方式激活，复制以下内容：
 ```
@@ -87,12 +89,12 @@ ThisCrackLicenseId-{
 "autoProlongated":false}
 ```
 
-ps：上面的`licenseeName`,`assigneeName`:,`assigneeEmail`:,`licenseRestriction`,可以改成自己喜欢的内容。
+ps：上面的`licenseeName`,`assigneeName`,`assigneeEmail`,`licenseRestriction`,可以改成自己喜欢的内容。
 
 ![](https://i.imgur.com/JZrbBGa.png)
 
 
+---
+**欢迎关注我的公众号：**
 
-关注我的公众号：
-
-![](../img/qrcode.jpg)
+![](https://turbobin.github.io/img/qrcode.jpg)
