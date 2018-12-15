@@ -89,7 +89,7 @@ ThisCrackLicenseId-{
 "autoProlongated":false}
 ```
 
-ps：上面的`licenseeName`,`assigneeName`,`assigneeEmail`,`licenseRestriction`,可以改成自己喜欢的内容。
+ps：上面的`licenseeName`,`assigneeName`,`assigneeEmail`,`licenseRestriction`,`licenseRestriction` 可以改成自己喜欢的内容。
 
 ![](https://i.imgur.com/JZrbBGa.png)
 
