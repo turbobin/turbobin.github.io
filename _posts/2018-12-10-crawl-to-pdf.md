@@ -116,6 +116,7 @@ def use_beautifulsoup_get_content(response):
     return content
 ```
 **生成HTML文件**
+
 取回内容之后，把之前的html头加上，就可以生成文件了。
 ```python
 html = html_template.format(content=content)
@@ -130,6 +131,7 @@ return name
 ```
 
 **把HTML转成PDF**
+
 导入pdfkit包，传入HTML文件名(可以是单个也可以是文件名列表)和需要生成的pdf文件名
 ```python
 def save_to_pdf(htmls, file_name):
