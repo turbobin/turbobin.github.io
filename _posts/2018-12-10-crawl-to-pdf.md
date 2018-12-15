@@ -195,13 +195,15 @@ html_template = """
 
 跟原网页一模一样，简直完美~
 
+完整代码可到GitHub获取：[https://github.com/turbobin/toPdf](https://github.com/turbobin/toPdf)
+
 **后记**
 
 授人以鱼不如授人以渔。
 相信做过这个爬虫之后，以后想要网上任何的官方文档、教程，都能爬下来制作PDF电子书。想要廖大神的Python教程？爬！想要Git教程？爬！想要刘江的Django教程？爬！
 
 ---
-关注本公众号「Python手记」，后台回复：Python指南 即可免费获取，不套路。之后也会送出其他教程，敬请期待。
+关注本公众号「Python手记」，后台回复：**Python指南** 即可免费获取，不套路。之后也会送出其他教程，敬请期待。
 
 
 ---
