@@ -11,17 +11,16 @@ tags:
 ---
 
 最近在老铁的推荐下购买了一本《Python编程之美：最佳实践指南》，据说是Python用户的一本百科式学习指南。对Python进阶的学习有很好的指导作用。此书是上月出版的中文译本，原书名是”Hitchhiker’s Guide to Python”，由Python社区的大神，requests库的作者Kenneth Reitz发起并组织编写，秉承“for humans”的理念，质量必然精品啊。
-
 由于我购买的书迟迟不发货，期间偶然发现了这个网址：
-[https://pythonguidecn.readthedocs.io/zh/latest/](https://pythonguidecn.readthedocs.io/zh/latest/)
+[https://pythonguidecn.readthedocs.io/zh/latest/](https://pythonguidecn.readthedocs.io/zh/latest/)  
 原来这本书早已有了中文在线翻译文档，且还在持续更新中，而且总共有七国语言的翻译版，马上手痒了起来，下手就一个字：爬！为了以后学习方便，做成PDF电子书先睹为快。
 
 **准备工作**
 
 爬取HTML页面转成PDF需要用到`wkhtmltopdf`工具，下载地址：
-[https://wkhtmltopdf.org/downloads.html](https://wkhtmltopdf.org/downloads.html) 
-`pdfkit`是`wkhtmltopdf`的Python封装包，使用pip安装
-`pip install pdfkit`
+[https://wkhtmltopdf.org/downloads.html](https://wkhtmltopdf.org/downloads.html)   
+`pdfkit`是`wkhtmltopdf`的Python封装包，使用pip安装  
+`pip install pdfkit`  
 提取网页信息可以用`BeautifulSoup`或`xpath`，安装：
 ```python
 pip install BeautifulSoup

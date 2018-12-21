@@ -176,7 +176,7 @@ Chrome书签收藏有 200 个以上了，如何把这些书签导入我的收藏
 
 2.下面我们来用 BeautifulSoup 把书签名和对应 url 爬下来，保存 json 文件，程序如下：
 
-{% highlight python %}
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # created on '2018/12/05'
@@ -208,7 +208,7 @@ def main():
 
 if __name__ == '__main__':
 	main()
-{% endhighlight %}
+```
 3.把文件 openlist.json (固定命名) 放到 OpenTool.exe 文件同级目录下，可以和原来的 openlist.json 做一下合并，现在打开软件，可以看到书签已经加载进来了。
 ![](https://i.imgur.com/Fvxqm0t.png)
 
