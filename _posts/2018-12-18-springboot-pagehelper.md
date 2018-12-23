@@ -85,5 +85,9 @@ public Object findAllUsers(
 
 可以使用默认参数，也可以使用 “page”、“pagesize” 参数的自由组合进行查询。
 
+**推荐阅读：**
+
+[基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
+
 
 >写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。

@@ -7,7 +7,7 @@ author:     turbobin
 header-img: img/post-bg-debug.jpg
 catalog: true
 tags:
-    - [微服务，spring boot]
+    - [微服务, spring boot]
 ---
 
 ### 简述
@@ -110,3 +110,9 @@ IDEA 构建:
 ![]({{site.url}}/img/java/springboot-05.png)
 
 一路 Next，就生成了基本的 Spring Boot 应用。
+
+**推荐阅读：**
+
+[基于 Spring Boot 来开发 Spring 项目]({{site.url}}/2018/12/16/spring-with-springboot/)
+
+[基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
