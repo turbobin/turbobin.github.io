@@ -179,22 +179,22 @@ def main():
 这...跟网页相比好像有点丑啊，难道忙活了一场就为了这个？
 别急，我们在HTML的head部分加上css的链接试试：
 ```python
-html_template = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://pythonguidecn.readthedocs.io/zh/latest/_static/alabaster.css" rel="stylesheet" type="text/css">
-    <link href="https://pythonguidecn.readthedocs.io/zh/latest/_static/pygments.css" rel="stylesheet" type="text/css">
-    <link href="https://media.readthedocs.org/css/badge_only.css" rel="stylesheet" type="text/css">
-    <link href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" rel="stylesheet" type="text/css">
-</head>
-<body style>
-    <div class="body" role="main">
-    {content}
-    </div>
-</body>
-</html>
+html_template = """  
+<!DOCTYPE html>  
+<html lang="en">  
+<head> 
+    <meta charset="UTF-8">  
+    <link href="https://pythonguidecn.readthedocs.io/zh/latest/_static/alabaster.css" rel="stylesheet" type="text/css">  
+    <link href="https://pythonguidecn.readthedocs.io/zh/latest/_static/pygments.css" rel="stylesheet" type="text/css">  
+    <link href="https://media.readthedocs.org/css/badge_only.css" rel="stylesheet" type="text/css">  
+    <link href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" rel="stylesheet" type="text/css">  
+</head>  
+<body style>  
+    <div class="body" role="main">  
+    {content}  
+    </div>  
+</body>  
+</html>  
     """
 ```
 再生成一遍看看效果：
