@@ -7,7 +7,7 @@ author:     turbobin
 header-img: img/post-bg-debug.jpg
 catalog: true
 tags:
-    - 微服务，spring boot
+    - [微服务，spring boot]
 ---
 
 ### 简述

@@ -7,7 +7,7 @@ author:     turbobin
 header-img: img/post-bg-debug.jpg
 catalog: true
 tags:
-    - 微服务，spring boot
+    - [微服务，spring boot]
 ---
 [上一节]({{site.url}}/2018/12/15/start-springboot/)已经构建一个Spring Boot基本应用，其实就是引入了依赖包，创建了一个启动类。
 下面运用 Spring 的分层逻辑来开发一个简单的Spring项目。
@@ -116,8 +116,8 @@ public class UserController {
 启动DemoApplication.java，用浏览器测试：
 ![]({{site.url}}/img/java/springboot-08.png)
 
->这里json的数据格式化推荐一个Chrome插件：极简json。非常好用！
+>这里 json 的数据格式化推荐一个 Chrome 插件：极简 json 。非常好用！
 
 **小结：**  
 
-可以看到，用Spring Boot来开发Spring项目变得很方便，不需要各种复杂的xml文件，只需要很少的配置，就可以快速构建一个完整的项目。
+可以看到，用 Spring Boot 来开发 Spring 项目变得很方便，不需要各种复杂的 xml 文件，只需要很少的配置，就可以快速构建一个完整的项目。
