@@ -7,7 +7,7 @@ author:     turbobin
 header-img: img/post-bg-debug.jpg
 catalog: true
 tags:
-    - [微服务，spring boot]
+    - [微服务, spring boot]
 ---
 [上一节]({{site.url}}/2018/12/15/start-springboot/)已经构建一个Spring Boot基本应用，其实就是引入了依赖包，创建了一个启动类。
 下面运用 Spring 的分层逻辑来开发一个简单的Spring项目。

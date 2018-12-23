@@ -2,7 +2,7 @@
 title: turbobin's Blog
 SEOTitle: turbobin
 header-img: img/post-bg-desk.jpg
-email: turbobin.cao@gmail.com
+email: ["turbobin.cao@gmail.com", "turbobin@foxmail.com"]
 description: "Chaos is a ladder."
 keyword: "turbobin, 如暘, Python, Java, Linux"
 url: "http://turbobin.github.io"          # your host, for absolute URL
@@ -11,7 +11,7 @@ github_repo: "https://github.com/turbobin/turbobin.github.io.git" # you code rep
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "you allways need to find a way out."
+sidebar-about-description: "you always need to find a way out."
 sidebar-avatar: /img/turbobin.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 

@@ -185,8 +185,11 @@ layout: default
                             {% endif %}
                             
                         </ul>
+                        <!-- email -->
                         {% if site.email %}
-                            <p>✉️ {{site.email}}</p>
+                        	{% for email in site.email %}
+                            	<p>✉️ {{email}}</p>
+                            {% endfor %}
                         {% endif %}
                     </div>
                 </section>
