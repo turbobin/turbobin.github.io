@@ -89,7 +89,7 @@ IDE开发工具：IDEA 专业版。
 ```
 配置文件application.properties：
 
-```
+```properties
 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/mydatabase?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
 spring.datasource.username=root
 spring.datasource.password=root
@@ -287,4 +287,4 @@ public class UserController {
 
 [Spring Boot 实现分页查询 – pagehelper]({{site.url}}/2018/12/18/springboot-pagehelper/)
 
->写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。
+>写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

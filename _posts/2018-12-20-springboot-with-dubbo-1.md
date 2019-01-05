@@ -461,7 +461,7 @@ public class Application {
 
 **配置文件 application.properties**
 
-```
+```properties
 spring.application.name=springboot-dubbo-provider
 ##端口号
 server.port=8880
@@ -596,7 +596,7 @@ public class UserController {
 
 **配置文件application.properties**
 
-```
+```properties
 spring.application.name=springboot-dubbo-consumer
 ##端口号
 server.port=8881
@@ -655,4 +655,4 @@ public class Application {
 [Spring Boot 整合 Dubbo 框架(二) - dubbo xml 配置方式]({{site.url}}/2018/12/21/springboot-with-dubbo-2/)
 
 
->写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。
+>写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

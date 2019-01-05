@@ -27,7 +27,7 @@ Dubbo 将自动加载 classpath 根目录下的 dubbo.properties，可以通过J
 
 在 application.properties同级目录下新建一个dubbo.properties，将application.properties 中 dubbo 的相关配置移到 dubbo.propertie中：
 
-```
+```properties
 ## Dubbo 服务提供者配置
 dubbo.application.name=spring-dubbo-provider
 dubbo.registry.address=zookeeper://127.0.0.1:2181
@@ -234,4 +234,4 @@ public class Application {
 [Spring Boot 整合 Dubbo 框架(一) - dubbo 注解配置方式]({{site.url}}/2018/12/20/springboot-with-dubbo-1/)
 
 
->写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。
+>写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

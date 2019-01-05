@@ -29,7 +29,7 @@ IDE开发工具：IDEA 专业版。
 
 **Step2：在application.properties中添加参数：**
 
-```
+```properties
 # pagehelper配置
 pagehelper.helper-dialect=mysql
 pagehelper.reasonable=true
@@ -46,6 +46,9 @@ pagehelper.returnPageInfo=check
 //添加分页查询方法
 PageInfo<User> findAllUsers(int page, int pagesize);
 
+//方法二
+Page<User> findAllUserInfo(int page, int pagesize);
+
 ```
 实现类UserServiceImpl：
 ```java
@@ -56,6 +59,23 @@ PageInfo<User> findAllUsers(int page, int pagesize);
         List<User> users = userMapper.selectAllUsers();
 //        PageInfo<User> all = new PageInfo<>(users);
         return new PageInfo<>(users);
+    }
+
+	//方法二
+    @Override
+    public Page<User> findAllUserInfo(int page, int pagesize) {
+
+//        Page<User> resultlist = PageHelper.startPage(page, pagesize, true)
+//                .doSelectPage(new ISelect() {
+//                    @Override
+//                    public void doSelect() {
+//                        userMapper.selectAllUsers();
+//                    }
+//                });
+        //上述匿名函数改成 lambda表达式
+        Page<User> resultlist = PageHelper.startPage(page, pagesize, true)
+                .doSelectPage(() -> userMapper.selectAllUsers());
+        return resultlist;
     }
 
 ```
@@ -71,7 +91,9 @@ public Object findAllUsers(
                 int page,
         @RequestParam(name = "pagesize", required = false, defaultValue = "2")
         int pagesize) {
-    return userService.findAllUsers(page, pagesize);
+   //        return userService.findAllUsers(page, pagesize);
+        return userService.findAllUserInfo(page, pagesize);
+
 }
 
 ```
@@ -90,4 +112,4 @@ public Object findAllUsers(
 [基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
 
 
->写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。
+>写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

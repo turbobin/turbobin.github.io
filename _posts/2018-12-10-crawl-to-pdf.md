@@ -75,18 +75,18 @@ def get_url_list(url):
 首先构造一个HTML头，预留出内容体的部分待填充
 ```python
 def create_htmls(url, name):
-    html_template = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body style>
-    <div class="body" role="main">
-    	{content}	# 预留出内容体占位
-    </div>
-</body>
-</html>
+    html_template = """  
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+</head>  
+<body style>  
+    <div class="body" role="main">  
+    	{content}	# 预留出内容体占位  
+    </div>  
+</body>  
+</html>  
     """
 
     print('正在请求:', url)
@@ -140,12 +140,12 @@ return name
 导入pdfkit包，传入HTML文件名(可以是单个也可以是文件名列表)和需要生成的pdf文件名
 ```python
 def save_to_pdf(htmls, file_name):
-    """
-    把所有html文件转成pdf文件
-    :param htmls:  html文件列表
-    :param file_name: pdf文件名
-    :return:
-    """
+    """  
+    把所有html文件转成pdf文件  
+    :param htmls:  html文件列表  
+    :param file_name: pdf文件名  
+    :return:  
+    """  
     print('正在转成pdf,请等待...')
 	# 这里配置成你的wkhtmltopdf安装路径
     path_wkthmltopdf = r'D:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'

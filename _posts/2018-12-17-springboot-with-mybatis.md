@@ -321,7 +321,7 @@ public interface UserMapper {
 最后来配置数据库连接：
 
 打开application.properties:
-```
+```properties
 server.port=8080
 
 spring.datasource.name=mysql_test
@@ -377,4 +377,4 @@ mybatis.type-aliases-package=com.ccb.springboot.entity
 [Spring Boot 使用 JPA 简化数据库的访问]({{site.url}}/2018/12/19/springboot-with-jpa/)
 
 
->写技术博客不易，转载请注明出处，附上原文链接。谢谢合作。
+>写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。
