@@ -23,7 +23,7 @@ Jetbrains 公司的全家桶越来越流行，他们家的集成工具体验越�
 然后保存。 
 
 3. 启动Pycharm, 选择激活码激活方式，复制以下内容：
-```
+```json
 ThisCrackLicenseId-{
 "licenseId":"11011",
 "licenseeName":"Pycharm",
@@ -62,7 +62,7 @@ ThisCrackLicenseId-{
 然后保存。
 
 3. 启动IntelliJ IDEA，选择激活码方式激活，复制以下内容：
-```
+```json
 ThisCrackLicenseId-{
 "licenseId":"11011",
 "licenseeName":"IntelliJ IDEA",
@@ -92,7 +92,6 @@ ThisCrackLicenseId-{
 ps：上面的`licenseeName`,`assigneeName`,`assigneeEmail`,`licenseRestriction`,`licenseRestriction` 可以改成自己喜欢的内容。
 
 ![](https://i.imgur.com/JZrbBGa.png)
-
 
 ---
 **欢迎关注我的公众号：**

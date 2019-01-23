@@ -207,4 +207,8 @@ Eureka Server之间通过复制的方式完成数据的同步，Eureka还提供�
 
 
 
+**推荐阅读：**
+
+[Spring Cloud 最佳项目构建](https://turbobin.github.io/2019/01/10/best-springcloud-practice/)
+
 >写技术博客不易，转载请注明出处，附上本原文链接, 谢谢合作。
