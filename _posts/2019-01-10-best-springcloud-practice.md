@@ -15,14 +15,20 @@ tags:
 
 实际项目开发中经常使用 maven 聚合项目来进行构建，为了保持相对独立性，可按照分层逻辑把各个逻辑层拆开，参考如下：
 ![](http://plsbxlixi.bkt.clouddn.com/Ft90tmHTifdODHPJT-kaALOCdqTD)
-首先分成三大类：服务提供者 (springcloud-microservice-provider)，服务消费者 (springcloud-microservice-comsumer)，注册中心 (springcloud-microservice-eureka)。
+
+首先分成三大类：
+* 服务提供者 (springcloud-microservice-provider)
+* 服务消费者 (springcloud-microservice-comsumer)
+* 注册中心 (springcloud-microservice-eureka)
+
 IEDA 可通过 Ctrl+Alt+Shift+s (或选择 file ->Project Structure) 打开项目构建，选择 Modules，点击 + ->New Project 创建三个模块，这样就可以将像 eclipse 一样将项目显示在同一个窗口中。
+
 服务提供者和服务消费者内部结构类似，可分为：
-父类 pom.xml：同一管理子项目依赖包版本
-app：存放启动类和公共配置文件
-common-api：存放公共接口，如实体类 model，持久层数据访问对象接口 DAO 等
-service-inf：存放业务层接口
-service-impl：存放业务层接口实现类
+* 父类 pom.xml：同一管理子项目依赖包版本
+* app：存放启动类和公共配置文件
+* common-api：存放公共接口，如实体类 model，持久层数据访问对象接口 DAO 等
+* service-inf：存放业务层接口
+* service-impl：存放业务层接口实现类
 子模块之间如果有调用关系就把相应的子模块依赖进来，但是注意不要循环依赖。
 
 ### Spring Cloud 项目构建
@@ -96,20 +102,20 @@ public class EurekaServer {
 }
 ```
 配置文件 application.properties：
-```properties
-# 服务端口号
+```
+# 服务端口号  
 server.port=6868
 
-# 应用名称
+# 应用名称  
 spring.application.name=springcloud-microserice-eureka:6868
-# 是否需要将自己注册到注册中心中,因为本身就是一个注册中心,所以不需要将自己注册到注册中心中
-# 搭建集群时，改为 true
+# 是否需要将自己注册到注册中心中,因为本身就是一个注册中心,所以不需要将自己注册到注册中心中  
+# 搭建集群时，改为 true  
 eureka.client.registerWithEureka=false
 
-# 是否从注册中心中获取注册信息
+# 是否从注册中心中获取注册信息  
 eureka.client.fetchRegistry=false
 
-# 客户端和服务端进行交互的地址
+# 客户端和服务端进行交互的地址  
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 ```
 启动 EurekaService，访问 http://localhost:6868/
@@ -404,7 +410,8 @@ public interface ItemService {
 </project>
 
 ```
-② 创建 ItemServiceImpl：  
+② 创建 ItemServiceImpl
+
 这里可以直接导入 common-api 中的包，为什么呢？  
 这是因为 maven 的可传递性依赖。比如 C 依赖 B，B 依赖 A，那么 C 可以同时使用 B 和 A 中的包。
 ```java
@@ -429,6 +436,7 @@ public class ItemServiceImpl implements ItemService {
 }
 ```
 ③ 创建一个 Controller 来调用：
+
 ```java
 package com.ccb.springcloud.provider.service.controller;
 
@@ -454,6 +462,7 @@ public class ItemController {
 
 ```
 **5. 启动类：主要存放配置文件和启动类**
+
 pom.xml：
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -508,6 +517,7 @@ pom.xml：
 这里把 service-impl 项目依赖进来就可以了，因为 service-impl 继承了 service-inf 和 common-api。
 
 创建启动类：
+
 ```java
 package com.ccb.springcloud.provider.app;
 
@@ -531,7 +541,8 @@ public class ItemApplication {
 ```
 
 配置文件 application.properties:
-```properties
+
+```
 # 应用端口号
 server.port=8084
 
@@ -596,6 +607,7 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 测试成功。但是发现响应数据变成了 xml 格式。
 这是因为我们引入了 eureka server 的依赖，导致破坏了之前 SpringMVC 默认的配置，从而导致了响应成了 xml。
 解决方法：启动类中排除 eureka server 中的 xml 依赖，如下：
+
 ```xml
 <!--导入 Eureka 服务的依赖-->
 <dependency>
@@ -620,7 +632,8 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 
 #### 服务消费者 (springcloud-microservice-eureka)
 开发步骤与服务提供者类似，不同的是，这里订单服务除了查询订单基本信息外，还需要通过 order_details 把关联的商品 id 查询出来，然后通过服务发现与注册机制，从注册中心获取服务提供者的 ip 和端口号，然后发送请求到服务提供者获取商品信息列表。
-1. 父 pom.xml，和服务提供者差不多：
+1.父 pom.xml，和服务提供者差不多：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -712,8 +725,9 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 </project>
 
 ```
-2. common-api：使用插件自动创建 items 表实体类和 mapper 类
-    参考上一节，方法类似，在 resource 下创建 generator/generatorConfig.xml，这里生成两个表 orders 和 order_details，内容如下：
+2.common-api：使用插件自动创建 items 表实体类和 mapper 类
+参考上文，方法类似，在 resource 下创建 generator/generatorConfig.xml，这里生成两个表 orders 和 order_details，内容如下：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC
@@ -770,12 +784,14 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 ```
 创建 maven 插件启动命令，生成 model，mapper dao，mapper xml 代码，参考上一节。
 由于需要在 order_details 中通过 order_id 查询对应的 item_id，所以在 OrderDetailMapper 中添加一个方法：
+
 ```java
 
 List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 查询数据
 
 ```
 对应的 xml：
+
 ```xml
 <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
   select
@@ -784,7 +800,8 @@ List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 
   where order_id = #{orderId,jdbcType=INTEGER}
 </select>
 ```
-3. service-inf：把 common-api 依赖进来，还需要用到服务提供者的接口
+3.service-inf：把 common-api 依赖进来，还需要用到服务提供者的接口
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -819,6 +836,7 @@ List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 
 
 ```
 创建一个返回对象实体类：
+
 ```java
 package com.ccb.springcloud.comsumer.io;
 
@@ -853,6 +871,7 @@ public class OrderInfo implements Serializable {
 
 ```
 创建订单服务查询接口：
+
 ```java
 package com.ccb.springcloud.comsumer.service;
 
@@ -865,8 +884,9 @@ public interface OrderService {
 }
 
 ```
-4. service-impl
-    pom.xml：把 service-inf 依赖进来
+4.service-impl
+
+pom.xml：把 service-inf 依赖进来
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -911,6 +931,7 @@ public interface OrderService {
 
 ```
 创建一个远程调用商品服务的类 ItemServiceRemote：这里查询很关键，商品列表需要依赖 Eureka 客户端服务发现获取服务提供者 ip 地址和端口号，然后构造 http 请求查询商品信息。
+
 ```java
 
 /**
@@ -955,7 +976,7 @@ public class ItemServiceRemote {
 
 ```
 OrderServiceImpl：分别把 订单 和 商品列表 查询出来
-```xml
+```java
 package com.ccb.springcloud.comsumer.service.impl;
 // 省略 import
 
@@ -1001,8 +1022,9 @@ private ItemServiceRemote itemServiceRemote;    //将查询商品服务注进来
 
 }
 ```
-5. 启动类 app
-    pom.xml
+5.启动类 app
+pom.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -1065,6 +1087,7 @@ private ItemServiceRemote itemServiceRemote;    //将查询商品服务注进来
 ```
 
 创建启动类 OrderApplication：
+
 ```java
 package com.ccb.springcloud.comsumer.app;
 
@@ -1096,7 +1119,8 @@ public class OrderApplication {
 
 ```
 配置文件 application.properties：
-```properties
+
+```
 # 应用端口号
 server.port=8085
 
@@ -1146,16 +1170,17 @@ spring.datasource.druid.test-on-return=false
 spring.datasource.druid.pool-prepared-statements=false
 spring.datasource.druid.max-pool-prepared-statement-per-connection-size=20
 
-#mybatis 配置
+#mybatis配置
 mybatis.mapper-locations=classpath:mapping/*.xml
-mybat
+mybatis.type-aliases-package=com.ccb.springcloud.comsumer.common.model
+
 ```
-6. 启动测试
-    ![](http://plsbxlixi.bkt.clouddn.com/FpDcmCIhgqVf_v-vQJ8x94_upDCo)
-    Eureka 注册成功
-    ![](http://plsbxlixi.bkt.clouddn.com/FvL1Nj5jibYETyVHPg1Rts9fdTCA)
-    浏览器测试，可见对应的商品信息也查出来了
-    ![](http://plsbxlixi.bkt.clouddn.com/FkLYJXKHDXn_638gy9Vu2yUupxNY)
+6.启动测试
+![](http://plsbxlixi.bkt.clouddn.com/FpDcmCIhgqVf_v-vQJ8x94_upDCo)
+Eureka 注册成功
+![](http://plsbxlixi.bkt.clouddn.com/FvL1Nj5jibYETyVHPg1Rts9fdTCA)
+浏览器测试，可见对应的商品信息也查出来了
+![](http://plsbxlixi.bkt.clouddn.com/FkLYJXKHDXn_638gy9Vu2yUupxNY)
 
 最后来看一下项目结构，和服务提供者差不多：
 ![](http://plsbxlixi.bkt.clouddn.com/FmWEnL0p0-qRWUTnYuUV5q1-r45v)
