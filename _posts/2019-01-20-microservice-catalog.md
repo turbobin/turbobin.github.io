@@ -34,11 +34,11 @@ tags:
 
 ##### [9. Spring Cloud 及 Eureka 注册中心)](https://turbobin.github.io/2019/01/07/springcloud-and-eureka/)
 
-##### [10.Spring Cloud 最佳项目构建)](https://turbobin.github.io/2019/01/10/best-springcloud-practice/)
+##### [10.Spring Cloud 最佳项目构建](https://turbobin.github.io/2019/01/10/best-springcloud-practice/)
 
-##### [11.容错保护机制：Hystrix)](https://turbobin.github.io/2019/01/13/learn-hystrix/)
+##### [11.容错保护机制：Hystrix](https://turbobin.github.io/2019/01/13/learn-hystrix/)
 
-##### [12.负载均衡：Ribbon)](https://turbobin.github.io/2019/01/13/learn-ribbon/)
+##### [12.负载均衡：Ribbon](https://turbobin.github.io/2019/01/13/learn-ribbon/)
 
 
 
