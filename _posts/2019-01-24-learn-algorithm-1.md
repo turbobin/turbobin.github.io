@@ -13,7 +13,7 @@ tags:
 ---
 ## 前言
 
-最近博客更完了一个[微服务系列](https://turbobin.github.io/2019/01/20/microservice-catalog/)的入门笔记，使用最新的 Spring Boot 2.0 实践了 dubbo、Spring Cloud 项目。
+最近博客更完了一个[微服务系列](https://turbobin.github.io/2019/01/24/microservice-catalog/)的入门笔记，使用最新的 Spring Boot 2.0 实践了 dubbo、Spring Cloud 项目。
 
 后面打算更一个数据结构与算法系列的笔记。
 
