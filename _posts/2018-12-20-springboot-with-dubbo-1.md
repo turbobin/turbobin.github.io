@@ -648,11 +648,14 @@ public class Application {
 通过这个案例，现在有点微服务的概念了，按我的理解，微服务的基本思想其实就是把一个大的功能拆分成一个个微小的服务，每个服务可以单独维护，服务提供者只需要向注册中心注册，同时对外暴露接口，服务消费者通过向注册中心订阅服务，就可以实现远程调用服务了，实现了服务的治理。当然，微服务中还有负载均衡、容错保护、配置中心等功能，后面用到Spring Cloud的时候再来实现。
 
 
+
 **推荐阅读：**
 
 [基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
 
 [Spring Boot 整合 Dubbo 框架(二) - dubbo xml 配置方式]({{site.url}}/2018/12/21/springboot-with-dubbo-2/)
+
+
 
 
 >写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

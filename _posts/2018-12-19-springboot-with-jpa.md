@@ -281,10 +281,14 @@ public class UserController {
 
 可以看出，使用Jpa在接口层就实现了数据对象关系映射，可以大大简化配置，也可以使用注解方式写入sql语句，比较灵活。一个缺点是，当项目越来越大，查询比较复杂时，可能需要在java类中写入大量sql，不是一个好办法，而mybatis一个好处是可以实现sql和java代码分离。
 
+
+
 **推荐阅读：**
 
 [基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
 
 [Spring Boot 实现分页查询 – pagehelper]({{site.url}}/2018/12/18/springboot-pagehelper/)
+
+
 
 >写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。

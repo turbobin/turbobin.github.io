@@ -122,6 +122,8 @@ public class UserController {
 
 可以看到，用 Spring Boot 来开发 Spring 项目变得很方便，不需要各种复杂的 xml 文件，只需要很少的配置，就可以快速构建一个完整的项目。
 
+
+
 **推荐阅读：**
 
 [基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)

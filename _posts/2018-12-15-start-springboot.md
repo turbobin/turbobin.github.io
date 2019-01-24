@@ -111,8 +111,14 @@ IDEA 构建:
 
 一路 Next，就生成了基本的 Spring Boot 应用。
 
+
+
 **推荐阅读：**
 
 [基于 Spring Boot 来开发 Spring 项目]({{site.url}}/2018/12/16/spring-with-springboot/)
 
 [基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)
+
+
+
+本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。写技术博客不易，转载请注明出处，附上本原文链接， 谢谢合作。

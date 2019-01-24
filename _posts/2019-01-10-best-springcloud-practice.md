@@ -9,6 +9,7 @@ catalog: true
 tags:
 
    - [微服务, spring cloud]
+
 ---
 
 ### 可能是最佳的微服务项目结构实践
@@ -17,26 +18,32 @@ tags:
 ![](http://plsbxlixi.bkt.clouddn.com/Ft90tmHTifdODHPJT-kaALOCdqTD)
 
 首先分成三大类：
-* 服务提供者 (springcloud-microservice-provider)
-* 服务消费者 (springcloud-microservice-comsumer)
-* 注册中心 (springcloud-microservice-eureka)
+
+- 服务提供者 (springcloud-microservice-provider)
+- 服务消费者 (springcloud-microservice-comsumer)
+- 注册中心 (springcloud-microservice-eureka)
 
 IEDA 可通过 Ctrl+Alt+Shift+s (或选择 file ->Project Structure) 打开项目构建，选择 Modules，点击 + ->New Project 创建三个模块，这样就可以将像 eclipse 一样将项目显示在同一个窗口中。
 
 服务提供者和服务消费者内部结构类似，可分为：
-* 父类 pom.xml：同一管理子项目依赖包版本
-* app：存放启动类和公共配置文件
-* common-api：存放公共接口，如实体类 model，持久层数据访问对象接口 DAO 等
-* service-inf：存放业务层接口
-* service-impl：存放业务层接口实现类
-子模块之间如果有调用关系就把相应的子模块依赖进来，但是注意不要循环依赖。
+
+- 父类 pom.xml：同一管理子项目依赖包版本
+- app：存放启动类和公共配置文件
+- common-api：存放公共接口，如实体类 model，持久层数据访问对象接口 DAO 等
+- service-inf：存放业务层接口
+- service-impl：存放业务层接口实现类
+  子模块之间如果有调用关系就把相应的子模块依赖进来，但是注意不要循环依赖。
 
 ### Spring Cloud 项目构建
+
 下面来用最佳项目结构来构建基本的 Spring Cloud 项目。
 结构图如下：
  ![](http://plsbxlixi.bkt.clouddn.com/FlPgmj7qnIuj3CQ-Z2rfID4eIzR_)
+
 #### 注册中心 (springcloud-microservice-eureka)
+
 pom.xml 中导入相应的依赖：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -83,7 +90,9 @@ pom.xml 中导入相应的依赖：
     </dependencies>
 </project>
 ```
+
 创建 Eureka 服务端启动类：
+
 ```java
 package com.ccb.springcloud.eureka;
 
@@ -101,7 +110,9 @@ public class EurekaServer {
     }
 }
 ```
+
 配置文件 application.properties：
+
 ```
 # 服务端口号  
 server.port=6868
@@ -118,10 +129,14 @@ eureka.client.fetchRegistry=false
 # 客户端和服务端进行交互的地址  
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 ```
+
 启动 EurekaService，访问 http://localhost:6868/
 ![](http://plsbxlixi.bkt.clouddn.com/FqDtjSTmkxL7TOL0JEo1ySCQF6cw)
+
 #### 数据准备
+
 **1. 商品库表：**
+
 ```sql
 CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -133,11 +148,13 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 ```
+
 > 注：这里建表的时候千万不要把表字段命名成 sql 关键字，比如：desc，describe，change，alter 等，否则，mapper 里面自动生成的 sql 语句执行会有很大的坑。
 
 插入一些数据：
 ![](http://plsbxlixi.bkt.clouddn.com/FhC3rBdQND-03z8TbyMqNNrpvyS5)
 **2. 创建订单库表**
+
 ```sql
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -148,10 +165,12 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 ```
+
 插入一些数据：
 ![](http://plsbxlixi.bkt.clouddn.com/FngyvvBuDliBhEU5b4DmE_CKDfTx)
 
 **3. 订单详情：**
+
 ```sql
 CREATE TABLE `order_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -159,12 +178,15 @@ CREATE TABLE `order_details` (
   `item_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 ```
+
 关联订单和商品数据：
 ![](http://plsbxlixi.bkt.clouddn.com/FqVtQsqEE0qgM4zn4QVZeWrvbJH9)
+
 #### 服务提供者 (springcloud-microservice-provider)
+
 **1. 父 pom.xml:管理依赖**
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -253,8 +275,10 @@ CREATE TABLE `order_details` (
 
 </project>
 ```
+
 **2. common-api：使用插件自动创建 items 表实体类和 mapper 类**
 pom.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -272,7 +296,9 @@ pom.xml
 </project>
 
 ```
+
 ① 在 resource 下创建 generator/generatorConfig.xml，内容如下：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC
@@ -322,7 +348,9 @@ pom.xml
    </context>
 </generatorConfiguration>
 
+
 ```
+
 ② 点击工具栏上的 Run——EditConfigrations,点+，选择 maven
 ![](http://plsbxlixi.bkt.clouddn.com/FqDWsFjjDuE-egYCb48WbIdLqrlV)
 ③ 选择名称，点击运行：
@@ -330,6 +358,7 @@ pom.xml
 运行成功后生成了 Item.java，ItemMapper.java，ItemMapper.xml
 **3. service-inf：把 common-api 依赖进来**
 ① pom.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -354,8 +383,11 @@ pom.xml
     </dependencies>
 </project>
 
+
 ```
+
 ② 创建 ItemService：
+
 ```java
 package com.ccb.springcloud.provider.service;
 
@@ -369,9 +401,12 @@ public interface ItemService {
     Item queryItemById(Integer id);
 }
 
+
 ```
+
 **4. service-impl：把 service-inf 依赖进来**
 ① pom.xml:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -409,11 +444,14 @@ public interface ItemService {
     </dependencies>
 </project>
 
+
 ```
+
 ② 创建 ItemServiceImpl
 
 这里可以直接导入 common-api 中的包，为什么呢？  
 这是因为 maven 的可传递性依赖。比如 C 依赖 B，B 依赖 A，那么 C 可以同时使用 B 和 A 中的包。
+
 ```java
 package com.ccb.springcloud.provider.service.impl;
 
@@ -434,7 +472,9 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.selectByPrimaryKey(id);
     }
 }
+
 ```
+
 ③ 创建一个 Controller 来调用：
 
 ```java
@@ -460,10 +500,13 @@ public class ItemController {
     }
 }
 
+
 ```
+
 **5. 启动类：主要存放配置文件和启动类**
 
 pom.xml：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -513,7 +556,9 @@ pom.xml：
     
 </project>
 
+
 ```
+
 这里把 service-impl 项目依赖进来就可以了，因为 service-impl 继承了 service-inf 和 common-api。
 
 创建启动类：
@@ -537,6 +582,7 @@ public class ItemApplication {
         SpringApplication.run(ItemApplication.class, args);
     }
 }
+
 
 ```
 
@@ -594,7 +640,9 @@ spring.datasource.druid.max-pool-prepared-statement-per-connection-size=20
 #mybatis 配置
 mybatis.mapper-locations=classpath:mapping/*.xml
 mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
+
 ```
+
 **6. 测试**
 启动注册中心 EurekaService，和 ItemApplication
 ![](http://plsbxlixi.bkt.clouddn.com/FqN0t6eHx1Ujk4ci-FyPfHILRDyb)
@@ -621,8 +669,8 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
         </exclusion>
     </exclusions>
 </dependency>
-
 ```
+
 重启 ItemService，再次测试：
 ![](http://plsbxlixi.bkt.clouddn.com/Fhmcs3pLLoG0XeV7xwOxZPIrNxAT)
 
@@ -631,6 +679,7 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 ![](http://plsbxlixi.bkt.clouddn.com/FvMCHxPxeLNLV1oxmYR6JKFomwLu)
 
 #### 服务消费者 (springcloud-microservice-eureka)
+
 开发步骤与服务提供者类似，不同的是，这里订单服务除了查询订单基本信息外，还需要通过 order_details 把关联的商品 id 查询出来，然后通过服务发现与注册机制，从注册中心获取服务提供者的 ip 和端口号，然后发送请求到服务提供者获取商品信息列表。
 1.父 pom.xml，和服务提供者差不多：
 
@@ -725,6 +774,7 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 </project>
 
 ```
+
 2.common-api：使用插件自动创建 items 表实体类和 mapper 类
 参考上文，方法类似，在 resource 下创建 generator/generatorConfig.xml，这里生成两个表 orders 和 order_details，内容如下：
 
@@ -782,14 +832,14 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 </generatorConfiguration>
 
 ```
+
 创建 maven 插件启动命令，生成 model，mapper dao，mapper xml 代码，参考上一节。
 由于需要在 order_details 中通过 order_id 查询对应的 item_id，所以在 OrderDetailMapper 中添加一个方法：
 
 ```java
-
 List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 查询数据
-
 ```
+
 对应的 xml：
 
 ```xml
@@ -800,6 +850,7 @@ List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 
   where order_id = #{orderId,jdbcType=INTEGER}
 </select>
 ```
+
 3.service-inf：把 common-api 依赖进来，还需要用到服务提供者的接口
 
 ```xml
@@ -834,7 +885,9 @@ List<OrderDetail> selectByOrderId(Integer orderId);   //新增，根据 orderId 
 
 </project>
 
+
 ```
+
 创建一个返回对象实体类：
 
 ```java
@@ -870,6 +923,7 @@ public class OrderInfo implements Serializable {
 }
 
 ```
+
 创建订单服务查询接口：
 
 ```java
@@ -884,9 +938,11 @@ public interface OrderService {
 }
 
 ```
+
 4.service-impl
 
 pom.xml：把 service-inf 依赖进来
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -930,10 +986,10 @@ pom.xml：把 service-inf 依赖进来
 </project>
 
 ```
+
 创建一个远程调用商品服务的类 ItemServiceRemote：这里查询很关键，商品列表需要依赖 Eureka 客户端服务发现获取服务提供者 ip 地址和端口号，然后构造 http 请求查询商品信息。
 
 ```java
-
 /**
  * 远程查询商品列表服务
  */
@@ -975,7 +1031,9 @@ public class ItemServiceRemote {
 }
 
 ```
+
 OrderServiceImpl：分别把 订单 和 商品列表 查询出来
+
 ```java
 package com.ccb.springcloud.comsumer.service.impl;
 // 省略 import
@@ -1021,7 +1079,9 @@ private ItemServiceRemote itemServiceRemote;    //将查询商品服务注进来
     }
 
 }
+
 ```
+
 5.启动类 app
 pom.xml
 
@@ -1084,6 +1144,7 @@ pom.xml
     </dependencies>
 
 </project>
+
 ```
 
 创建启动类 OrderApplication：
@@ -1118,6 +1179,7 @@ public class OrderApplication {
 }
 
 ```
+
 配置文件 application.properties：
 
 ```
@@ -1175,6 +1237,7 @@ mybatis.mapper-locations=classpath:mapping/*.xml
 mybatis.type-aliases-package=com.ccb.springcloud.comsumer.common.model
 
 ```
+
 6.启动测试
 ![](http://plsbxlixi.bkt.clouddn.com/FpDcmCIhgqVf_v-vQJ8x94_upDCo)
 Eureka 注册成功
@@ -1186,10 +1249,71 @@ Eureka 注册成功
 ![](http://plsbxlixi.bkt.clouddn.com/FmWEnL0p0-qRWUTnYuUV5q1-r45v)
 ![](http://plsbxlixi.bkt.clouddn.com/FiJ3EBSgwoHXvtLeIHWRKDfdnLQg)
 
+#### Eureka集群
+前面的测试发现，Eureka是一个单点服务，在生产环境容易发生单点故障，为了确保服务的高可用，我们需要搭建 Eureka集群。
+
+思路：Eureka 本身作为一个服务，提供注册的功能，如果启动多个 Eureka服务，彼此之间互相注册，就形成了一个集群。
+* 修改springcloud-microservice-eureka 配置文件，启动服务：
+
+```
+# 服务端口号(搭建集群时，换不同的端口号启动服务)
+server.port=6868
+
+# 应用名称
+spring.application.name=springcloud-microserice-eureka(6868)
+# 是否需要将自己注册到注册中心中,因为本身就是一个注册中心,所以不需要将自己注册到注册中心中
+# 搭建集群时，改为true
+eureka.client.registerWithEureka=true
+
+# 是否从注册中心中获取注册信息(搭建集群时改为true)
+eureka.client.fetchRegistry=true
+
+# 客户端和服务端进行交互的地址
+eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6869/eureka/
+```
+
+* 修改配置文件的端口号，再启动一个服务(需要点击工具栏 – Edit Configurations… - 勾上“Allow running in parallel”)：
+
+```
+# 服务端口号(搭建集群时，换不同的端口号启动服务)
+server.port=6869
+
+# 应用名称
+spring.application.name=springcloud-microserice-eureka(6869)
+# 是否需要将自己注册到注册中心中,因为本身就是一个注册中心,所以不需要将自己注册到注册中心中
+# 搭建集群时，改为true
+eureka.client.registerWithEureka=true
+
+# 是否从注册中心中获取注册信息(搭建集群时改为true)
+eureka.client.fetchRegistry=true
+
+# 客户端和服务端进行交互的地址
+eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
+```
+* 查看结果:
+![](http://plsbxlixi.bkt.clouddn.com/Fmbygx3TqhE8aM0b-JC-Tr06y7jS)
+![](http://plsbxlixi.bkt.clouddn.com/FpQ9qzMPr-8t0z80KacIVJ35PSyP)
+
+#### 将服务注册到 Eureka 集群
+修改配置文件，只需要添加集群的地址，用逗号隔开:
+
+```
+# 客户端和服务端进行交互的地址
+eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/,http://127.0.0.1:6869/eureka/
+```
+访问 http://localhost:6868/ 和  http://localhost:6869/ 
+![](http://plsbxlixi.bkt.clouddn.com/FmoqUvKR_8QgxIvP465gPyfQcEe4)
+发现在Eureka的两个Server中都注册对应的商品和订单服务。
+
+可以尝试关闭一个 Eureka 服务，看订单服务是否能调用成功。
+
 
 
 **推荐阅读：**
 
 [Spring Cloud 及 Eureka 注册中心](https://turbobin.github.io/2019/01/07/springcloud-and-eureka/)
 
-> 写技术博客不易，转载请注明出处，附上本原文链接, 谢谢合作。
+
+
+> 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。写技术博客不易，转载请注明出处，附上本原文链接， 谢谢合作。
+

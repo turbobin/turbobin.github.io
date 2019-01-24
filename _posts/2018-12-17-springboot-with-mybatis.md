@@ -370,6 +370,7 @@ mybatis.type-aliases-package=com.ccb.springboot.entity
 到这里就实现了 Spring Boot 和 mybatis 的整合，实现了与数据库的交互，不需要 mybatis 的 xml 文件，只需要很少的配置就可以完成。
 
 
+
 **推荐阅读：**
 
 [Spring Boot 实现分页查询 – pagehelper]({{site.url}}/2018/12/18/springboot-pagehelper/)
@@ -377,4 +378,6 @@ mybatis.type-aliases-package=com.ccb.springboot.entity
 [Spring Boot 使用 JPA 简化数据库的访问]({{site.url}}/2018/12/19/springboot-with-jpa/)
 
 
->写技术博客不易，转载请注明出处，附上原文链接[https://turbobin.github.io/](https://turbobin.github.io/) , 谢谢合作。
+
+
+>本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。写技术博客不易，转载请注明出处，附上本原文链接， 谢谢合作。
