@@ -121,4 +121,4 @@ IDEA 构建:
 
 
 
-本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。写技术博客不易，转载请注明出处，附上本原文链接， 谢谢合作。
+本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。

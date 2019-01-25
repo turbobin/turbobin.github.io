@@ -32,7 +32,7 @@ tags:
 
 ##### [8. Spring Boot 整合 Dubbo 框架(二)](https://turbobin.github.io/2018/12/21/springboot-with-dubbo-2/)
 
-##### [9. Spring Cloud 及 Eureka 注册中心)](https://turbobin.github.io/2019/01/07/springcloud-and-eureka/)
+##### [9. Spring Cloud 及 Eureka 注册中心](https://turbobin.github.io/2019/01/07/springcloud-and-eureka/)
 
 ##### [10.Spring Cloud 最佳项目构建](https://turbobin.github.io/2019/01/10/best-springcloud-practice/)
 
@@ -42,4 +42,4 @@ tags:
 
 
 
-> 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。写技术博客不易，转载请注明出处，附上本原文链接， 谢谢合作。
+> 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。
