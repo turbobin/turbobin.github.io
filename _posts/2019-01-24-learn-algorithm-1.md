@@ -4,7 +4,7 @@ title:      1. 衡量算法代码执行效率的指标：时间、空间复杂�
 subtitle:   极客时间《数据结构与算法之美》学习笔记
 date:       2019-01-24
 author:     turbobin
-header-img: img/post-bg-macbook.jpg
+header-img: img/post-bg-universe.jpg
 catalog: true
 tags:
 
