@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      5. 数据结构篇：栈
+title:      6. 数据结构篇：栈
 subtitle:   极客时间《数据结构与算法之美》学习笔记
 date:       2019-01-29
 author:     turbobin
