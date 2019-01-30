@@ -28,49 +28,49 @@ tags:
 # created on '2019/1/20'
 
 class ArrayStack():
-	"""基于数组实现的顺序栈"""
-	def __init__(self, n: int):
-		self.arr = []
-		self.count = 0
-		self.n = n
+    """基于数组实现的顺序栈"""
+    def __init__(self, n: int):
+        self.arr = []
+        self.count = 0
+        self.n = n
 
-	def push(self, item):
-		if self.count == self.n:
-			print('栈溢出了', self.arr)
-			return False
+    def push(self, item):
+        if self.count == self.n:
+            print(' 栈溢出了 ', self.arr)
+            return False
 
-		self.arr.append(item)
-		self.count += 1
-		print('push操作：', self.arr)
-		return True
+        self.arr.append(item)
+        self.count += 1
+        print('push 操作：', self.arr)
+        return True
 
-	def pop(self):
-		if self.count == 0:
-			print('栈空了', self.count)
-			return None
+    def pop(self):
+        if self.count == 0:
+            print(' 栈空了 ', self.count)
+            return None
 
-		item = self.arr[-1]
-		self.arr = self.arr[:-1]
-		self.count -= 1
-		print('pop操作：', item)
-		return item
+        item = self.arr[-1]
+        self.arr = self.arr[:-1]
+        self.count -= 1
+        print('pop 操作：', item)
+        return item
 
-	def __repr__(self):
-		return "{}".format(self.arr)
+    def __repr__(self):
+        return "{}".format(self.arr)
 
 if __name__ == '__main__':
-	A = ArrayStack(10)
-	A.push(3)
-	A.push(1)
-	A.push(4)
-	print(A)
+    A = ArrayStack(10)
+    A.push(3)
+    A.push(1)
+    A.push(4)
+    print(A)
 
-	A.pop()
-	A.pop()
-	A.pop()
-	A.pop() #栈空了，返回None
+    A.pop()
+    A.pop()
+    A.pop()
+    A.pop() #栈空了，返回 None
 
-	print(A)
+    print(A)
 
 ```
 链式栈：
@@ -80,44 +80,44 @@ if __name__ == '__main__':
 # created on '2019/1/20'
 
 class Node():
-	"""链表结点和 next 指针"""
-	def __init__(self, data, next=None):
-		self.data = data
-		self.next = next
+    """链表结点和 next 指针"""
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
 
 class LinkedStack():
-	"""基于链表实现的栈"""
-	def __init__(self):
-		self.base_node = None
+    """基于链表实现的栈"""
+    def __init__(self):
+        self.base_node = None
 
-	def push(self, item):
-		new_node = Node(item)
-		new_node.next = self.base_node
-		self.base_node = new_node
+    def push(self, item):
+        new_node = Node(item)
+        new_node.next = self.base_node
+        self.base_node = new_node
 
-	def pop(self):
-		if self.base_node:
-			item = self.base_node.data
-			self.base_node = self.base_node.next	# 表示删除一个结点
+    def pop(self):
+        if self.base_node:
+            item = self.base_node.data
+            self.base_node = self.base_node.next    # 表示删除一个结点
 
-	def __repr__(self):
-		base_node = self.base_node
-		nums = []
-		while base_node:
-			nums.append(base_node.data)
-			base_node = base_node.next
+    def __repr__(self):
+        base_node = self.base_node
+        nums = []
+        while base_node:
+            nums.append(base_node.data)
+            base_node = base_node.next
 
-		return "->".join(str(item) for item in items)
+        return "->".join(str(item) for item in items)
 
 
 if __name__ == '__main__':
-	stack = LinkedStack()
-	stack.push(1)
-	stack.push(2)
-	stack.push(3)
-	stack.push(4)
-	stack.pop()
-	print(stack)    # 3->2->1
+    stack = LinkedStack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
+    stack.pop()
+    print(stack)    # 3->2->1
 ```
 分析一下很容易得出，不管是出栈还是入栈操作，时间复杂度都为 O(1)。
 
@@ -131,11 +131,11 @@ if __name__ == '__main__':
 
 计算时，从左到右遍历表达式，当遇到数字就直接入栈 A，当遇到操作符就与栈 B 的栈顶操作符进行比较，如果比栈顶操作符优先级高就直接入栈，如果比栈顶操作符优先级低或者相同，就从运算符栈中取栈顶运算符，从操作数栈的栈顶取 2 个操作数，然后进行计算，再把计算完的结果压入操作数栈，继续比较。
 
-如：3+5*8-6这个表达式的计算过程：
+如：3+5*8-6 这个表达式的计算过程：
 ![image](https://static001.geekbang.org/resource/image/bc/00/bc77c8d33375750f1700eb7778551600.jpg)
 
 #### 栈在括号匹配中的应用
-我们假设表达式中只包含三种括号，圆括号 ()、方括号 [] 和花括号{}，并且它们可以任意嵌套。比如，`{[{}]}`或 `[{()}([])] `等都为合法格式，而`{[}()] `或 `[({)] `为不合法的格式。那我现在给你一个包含三种括号的表达式字符串，如何检查它是否合法呢？
+我们假设表达式中只包含三种括号，圆括号 ()、方括号 [] 和花括号 {}，并且它们可以任意嵌套。比如，`{[{}]}`或 `[{()}([])] `等都为合法格式，而`{[}()] `或 `[({)] `为不合法的格式。那我现在给你一个包含三种括号的表达式字符串，如何检查它是否合法呢？
 
 这里也可以用栈来解决。我们用栈来保存未匹配的左括号，从左到右依次扫描字符串。当扫描到左括号时，则将其压入栈中；当扫描到右括号时，从栈顶取出一个左括号。如果能够匹配，比如“(”跟“)”匹配，“[”跟“]”匹配，“{”跟“}”匹配，则继续扫描剩下的字符串。如果扫描的过程中，遇到不能配对的右括号，或者栈中没有数据，则说明为非法格式。
 

@@ -36,62 +36,62 @@ tags:
 # -*- coding: utf-8 -*-
 
 class ArrayQueue():
-	"""顺序队列"""
-	def __init__(self, capacity: int):
-		self.arr = []
-		self.capacity = capacity
-		self.head = 0
-		self.tail = 0
+    """顺序队列"""
+    def __init__(self, capacity: int):
+        self.arr = []
+        self.capacity = capacity
+        self.head = 0
+        self.tail = 0
 
-	def enqueue(self, item):
-		if self.tail == self.capacity:
-			if self.head == 0:
-				print('队列满了')
-				return False
+    def enqueue(self, item):
+        if self.tail == self.capacity:
+            if self.head == 0:
+                print('队列满了')
+                return False
 
-			# 进行数据搬移
-			for i in range(self.head, self.tail):
-				self.arr[i - self.head] = self.arr[i]
+            # 进行数据搬移
+            for i in range(self.head, self.tail):
+                self.arr[i - self.head] = self.arr[i]
 
-			# 重新调整指针和数组
-			self.tail = self.tail - self.head
-			self.head = 0
-			self.arr = self.arr[self.head: self.tail]
+            # 重新调整指针和数组
+            self.tail = self.tail - self.head
+            self.head = 0
+            self.arr = self.arr[self.head: self.tail]
 
-		self.arr.append(item)
-		self.tail += 1
-		print('入队:', item)
-		return True
+        self.arr.append(item)
+        self.tail += 1
+        print('入队:', item)
+        return True
 
-	def dequeue(self):
-		if self.head == self.tail:
-			print('队列空了')
-			return None
+    def dequeue(self):
+        if self.head == self.tail:
+            print('队列空了')
+            return None
 
-		item = self.arr[self.head]
-		self.head += 1
-		# self.arr = self.arr[self.head:]
-		print('出队：', item)
-		return item
+        item = self.arr[self.head]
+        self.head += 1
+        # self.arr = self.arr[self.head:]
+        print('出队：', item)
+        return item
 
-	def __repr__(self) -> str:
-		print('指针：', self.head, self.tail)
-		return '{}'.format(self.arr[self.head: self.tail])
+    def __repr__(self) -> str:
+        print('指针：', self.head, self.tail)
+        return '{}'.format(self.arr[self.head: self.tail])
 
 
 if __name__ == '__main__':
-	arrayqueue = ArrayQueue(5)
-	arrayqueue.enqueue(2)   #入队
-	arrayqueue.enqueue(3)
-	arrayqueue.enqueue(4)
-	arrayqueue.dequeue()    #出队
-	arrayqueue.dequeue()    #出队
-	arrayqueue.enqueue(5)
-	arrayqueue.enqueue(6)
-	arrayqueue.enqueue(7)
-	arrayqueue.enqueue(8)
-	arrayqueue.enqueue(9)   #队列满了，入队失败
-	print(arrayqueue)
+    arrayqueue = ArrayQueue(5)
+    arrayqueue.enqueue(2)   #入队
+    arrayqueue.enqueue(3)
+    arrayqueue.enqueue(4)
+    arrayqueue.dequeue()    #出队
+    arrayqueue.dequeue()    #出队
+    arrayqueue.enqueue(5)
+    arrayqueue.enqueue(6)
+    arrayqueue.enqueue(7)
+    arrayqueue.enqueue(8)
+    arrayqueue.enqueue(9)   #队列满了，入队失败
+    print(arrayqueue)
 
 ```
 基于这种思路实现的出队操作时间复杂度为 O(1)，入队操作最好情况时间复杂度为 O(1)，只有在 tail 指针到达尾部时才会触发一次数据搬移操作，这时候时间复杂度为 O(n)，随后进行正常入队，使用摊还分析法思路，均摊时间复杂度就为最好情况时间复杂度 O(1)。
@@ -119,7 +119,7 @@ class LinkedQueue:
     def __init__(self):
         self.head = None
         self.tail = None
-    
+
     def enqueue(self, item):
         new_node = Node(item)
         if self.tail:
@@ -128,7 +128,7 @@ class LinkedQueue:
             self.head = new_node
         self.tail = new_node
         return True
-    
+
     def dequeue(self):
         if self.head:
             item = self.head.data
@@ -136,7 +136,7 @@ class LinkedQueue:
             if not self.head:
                 self.tail = None
             return item
-    
+
     def __repr__(self):
         items = []
         base_node = self.head
@@ -179,58 +179,57 @@ if __name__ == "__main__":
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# created on '2019/1/21'
 
 class CircularQueue(object):
-	"""基于数组实现的循环队列"""
-	def __init__(self, capacity):
-		self.arr = []
-		self.capacity = capacity
-		self.head = 0
-		self.tail = 0
+    """基于数组实现的循环队列"""
+    def __init__(self, capacity):
+        self.arr = []
+        self.capacity = capacity
+        self.head = 0
+        self.tail = 0
 
 
-	def enqueue(self, item):
-		n = self.capacity
-		if (self.tail + 1)%n == self.head:
-			print('队列满了')
-			return False
-		
-		self.arr.append(item)
-		self.tail = (self.tail + 1)%n
-		return True
+    def enqueue(self, item):
+        n = self.capacity
+        if (self.tail + 1)%n == self.head:
+            print('队列满了')
+            return False
+        
+        self.arr.append(item)
+        self.tail = (self.tail + 1)%n
+        return True
 
-	def dequeue(self):
-		n = self.capacity
-		if self.head == self.tail:
-			print('队列空了')
-			return False
+    def dequeue(self):
+        n = self.capacity
+        if self.head == self.tail:
+            print('队列空了')
+            return False
 
-		item = self.arr[self.head]
-		self.head = (self.head + 1)%n
-		return item
+        item = self.arr[self.head]
+        self.head = (self.head + 1)%n
+        return item
 
-	def __repr__(self):
-		print('指针：', self.head, self.tail)
-		if self.head <= self.tail:
-			return "{}".format(self.arr[self.head: self.tail])
-		else:
-			return "{}".format(self.arr[self.head: self.capacity + self.tail])
+    def __repr__(self):
+        print('指针：', self.head, self.tail)
+        if self.head <= self.tail:
+            return "{}".format(self.arr[self.head: self.tail])
+        else:
+            return "{}".format(self.arr[self.head: self.capacity + self.tail])
 
 if __name__ == '__main__':
-	Q = CircularQueue(8)
-	for i in range(7):	# 实际只能存7个数据，最后一个存tail指针
-		Q.enqueue(i)
-	print(Q)
+    Q = CircularQueue(8)
+    for i in range(7):  # 实际只能存7个数据，最后一个存tail指针
+        Q.enqueue(i)
+    print(Q)
 
-	Q.dequeue()
-	Q.dequeue()
-	Q.dequeue()
-	Q.enqueue(7)
-	Q.enqueue(8)
-	Q.enqueue(9)
-	Q.enqueue(10) #入队失败，队列满了
-	print(Q)
+    Q.dequeue()
+    Q.dequeue()
+    Q.dequeue()
+    Q.enqueue(7)
+    Q.enqueue(8)
+    Q.enqueue(9)
+    Q.enqueue(10) #入队失败，队列满了
+    print(Q)
 
 ```
 
