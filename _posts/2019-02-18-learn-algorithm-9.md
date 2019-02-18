@@ -48,20 +48,20 @@ tags:
 
 ```python
 def bubbo_sort(arr):
-	n = len(arr)
-	if n <= 1:
-		return arr
+    n = len(arr)
+    if n <= 1:
+        return arr
 
-	flag = False	#提前退出冒泡排序的标志
-	for i in range(n-1):
-		for j in range(n-i-1):
-			if arr[j] > arr[j+1]:
-				arr[j], arr[j+1] = arr[j+1], arr[j]
-				flag = True
+    flag = False    #提前退出冒泡排序的标志
+    for i in range(n-1):
+        for j in range(n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                flag = True
 
-		if not flag:	#表示没有数据交换
-			break
-	return arr
+        if not flag:    #表示没有数据交换
+            break
+    return arr
 
 arr = [4, 5, 6, 1, 2, 3]
 arr = bubbo_sort(arr)
@@ -79,22 +79,22 @@ print(arr)
 代码实现：
 ```python
 def insert_sort(arr):
-	n = len(arr)
-	if n <= 1:
-		return arr
+    n = len(arr)
+    if n <= 1:
+        return arr
 
-	for i in range(1, n):
-		value = arr[i]
-		j = i - 1
-		while j >= 0:
-			if arr[j] > value:
-				arr[j+1] = arr[j]
-				j -= 1
-			else:
-				break
-		arr[j+1] = value
+    for i in range(1, n):
+        value = arr[i]
+        j = i - 1
+        while j >= 0:
+            if arr[j] > value:
+                arr[j+1] = arr[j]
+                j -= 1
+            else:
+                break
+        arr[j+1] = value
 
-	return arr
+    return arr
 
 arr = [4, 5, 6, 1, 2, 3]
 arr = insert_sort(arr)
@@ -113,30 +113,30 @@ print(arr)
 
 ```python
 def findmin(arr):
-	"""
-	找出数组中最小值
-	"""
-	min_num = arr[0]
-	min_index = 0
-	n = len(arr)
-	for i in range(1, n):
-		if arr[i] < min_num:
-			min_num = arr[i]
-			min_index = i
+    """
+    找出数组中最小值
+    """
+    min_num = arr[0]
+    min_index = 0
+    n = len(arr)
+    for i in range(1, n):
+        if arr[i] < min_num:
+            min_num = arr[i]
+            min_index = i
 
-	return min_index
+    return min_index
 
 
 def select_sort(arr):
-	"""
-	快速排序，时间复杂度 O(n^2)
-	"""
-	new_arr = []
-	for i in range(len(arr)):
-		min_index = findmin(arr)
-		new_arr.append(arr.pop(min_index))
+    """
+    快速排序，时间复杂度 O(n^2)
+    """
+    new_arr = []
+    for i in range(len(arr)):
+        min_index = findmin(arr)
+        new_arr.append(arr.pop(min_index))
 
-	return new_arr
+    return new_arr
 
 
 arr = [3, 5, 1, 6, 0, 6]
