@@ -7,7 +7,7 @@ author:     turbobin
 header-img: img/post-bg-rwd.jpg
 catalog: true
 tags:
-    - 
+    - other
 ---
 
 一直想开一个博客，一开始用Flask折腾了很久，连阿里云都买好了，但因为中途一些原因被打断了，后来发现，其实不用这么麻烦，使用Jekyll + GitHub Pages托管已经很方便了，而且还有很多模板，支持个人定制。
