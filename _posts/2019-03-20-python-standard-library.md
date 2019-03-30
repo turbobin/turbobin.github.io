@@ -1,0 +1,136 @@
+---
+layout:     post
+title:      什么是 RESTful 架构
+subtitle:   
+date:       2019-03-25
+author:     turbobin
+header-img: img/post-bg-coffee.jpeg
+catalog: true
+tags:
+
+   - [Python ]
+
+---
+
+### RESTful 架构
+
+#### 1. 定义
+
+[REST](https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2)（Representational State Transfer） 是一种设计 web API 的模式或者说规范，这个词是[Roy Thomas Fielding](http://en.wikipedia.org/wiki/Roy_Fielding)在他2000年的[博士论文](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)中提出的。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。REST一经提出基本上迅速取代了复杂而笨重的SOAP，成为Web API的标准了。
+
+符合 REST 规范的架构，就称为 RESTful 架构。
+
+REST（Representational State Transfer）翻译成**表现层状态转化**，其实是指 **资源的表现层状态转化**。
+
+##### 资源（Resource）
+
+什么是资源？资源是网络上的一个实体，可以是一段文本，一张图片，一个视频等等，要访问这个资源，可以使用 URL（统一资源定位符）指向它，每个资源对应一个特定的 URL，要获取某个资源，只要访问它的 URL 就行了。
+
+##### 表现层（Representation）
+
+“资源”是一种信息实体，但是它有多种表现形式，比如一张图片，有 JPG、PNG 格式，一个文本有 HTML、TXT、JSON 格式，我们把资源呈现出来的表现形式叫做”表现层“。
+
+URL 不代表具体的表现形式，只代表资源实体，或者说资源的位置，它的具体表现形式，应该在 `Accept`和`Content-type`字段指定。
+
+##### 状态转化（State Transfer）
+
+客户端通过 URL 和服务器进行交互，必然会涉及到数据和状态的变化。
+
+由于互联网通信协议 HTTP 协议是无状态的协议，这就意味着所有的状态都保存在服务端，客户端如果要对服务器资源进行操作，让服务端发生“状态转化”，就需要通过不同的方法表示不同的操作。最基本的操作无非就是增、删、改、查，HTTP 协议提供个四个不同方法来对应这几个基本操作：**GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。**
+
+##### 综述
+
+综合上面的解释，我们总结一下什么是RESTful架构：
+
+（1）每一个URI代表一种资源；
+
+（2）客户端和服务器之间，传递这种资源的某种表现层；
+
+（3）客户端通过四个HTTP动词，对服务器端资源进行操作，实现"表现层状态转化"。
+
+#### 2. RESTful API 设计规范
+
+##### 组织 URL
+
+- 在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应；
+- 通过固定前缀区分不同的 URL 资源，如`/static/`开头表示访问静态资源，`/api/`开头则表示 REST API；
+- 应该使用连字符`”-“`来提高URL的可读性，而不是使用下划线`”_”`;
+- 正斜杠分隔符`”/“`必须用来指示层级关系，并且结尾不应该包含斜杆`"/"`。如：`http://api.user.com/schools/grades/classes/boys - 学校中所有的男生` ;
+- URL 路径中首选小写字母，路径名词均为复数。
+
+##### 设置过滤信息
+
+如果记录太多，服务器不可能将信息全部返回给用户，API 设计应该提供参数。过滤返回的结果
+
+常见参数如下：
+
+- `?limit=10`：指定返回记录的数量
+- `?offset=10`：指定返回记录的开始位置。
+- `?page=2&per_page=100`：指定第几页，以及每页的记录数。
+- `?sortby=name&order=asc`：指定返回结果按照哪个属性排序，以及排序顺序。
+- `?animal_type_id=1`：指定筛选条件
+
+##### 返回状态码推荐标准 HTTP 状态码
+
+```markdown
+- 200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+- 201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
+- 202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
+- 204 NO CONTENT - [DELETE]：用户删除数据成功。
+- 400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
+- 401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。
+- 403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+- 404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+- 406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+- 410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。
+- 422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
+- 500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
+
+```
+
+##### 错误处理
+
+如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。
+
+```json
+{
+    error: "invalid API key"
+}
+```
+
+##### 返回结果
+
+针对不同的操作，服务器向用户返回的结果应该符合以下规范：
+
+```markdown
+- GET /collection：返回资源对象的列表（数组）
+- GET /collection/resource：返回单个资源对象
+- POST /collection：返回新生成的资源对象
+- PUT /collection/resource：返回完整的资源对象
+- PATCH /collection/resource：返回完整的资源对象
+- DELETE /collection/resource：返回一个空文档
+```
+
+返回的数据格式：应尽量使用 JSON，避免使用 XML。
+
+身份认证：API 的身份认证应使用[OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)框架。
+
+
+
+#### 3. 参考链接
+
+[理解 REST 架构 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+
+[RESTful API 设计指南 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+
+[RESTFUL API规范（详细版）](https://i6448038.github.io/2017/06/28/rest-%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/)
+
+[REST - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001473590199114b8523ba038dd4359a16ad0bbd3c8a1f2000)
+
+
+
+
+
+
+
+> 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。
