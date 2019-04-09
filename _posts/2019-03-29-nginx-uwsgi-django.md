@@ -297,41 +297,63 @@ $ vi uwsgi.ini
 
 ```ini
 # uwsgi.ini file
+
 [uwsgi]
 
 # Django-related settings
+
 #http = 192.168.180.130:8000
 
 # the base directory (full path)
+
 chdir = /usr/local/src/ykd-web
 
 # Django s wsgi file
+
 module = khyx_web.wsgi
 
 # 新建一个空白的reload文件，只要输入' touch reload'项目就会重启
+
 touch-reload = /usr/local/src/ykd-web/reload
+
 # process-related settings
+
 # master
+
 master = true
 
 # listen
+
 listen = 1000 # 并发的socket 连接数。默认为100。优化需要根据系统配置
 
 # maximum number of worker processes
+
 processes = 4
+
 workers = 10  # 并发处理进程数
 
 # the socket (use the full path to be safe
+
 # 等下把sock和nginx关联起来
+
 socket = /usr/local/src/ykd-web/khyx_web.sock
+
 # socket=:8000
+
 # ... with appropriate permissions - may be needed
+
 chmod-socket = 666
+
 #chown-socket = ykd-web:www-data
+
 # clear environment on exit
+
 vacuum = true
+
 # log file
+
 daemonize = /usr/local/src/ykd-web/log/run.log
+
 disable-logging = true  // 不记录正常信息，只记录错误信息
 ```
 
