@@ -4,7 +4,7 @@ title:      躺坑之路之 Nginx + uWSGI + Django 部署
 subtitle:   
 date:       2019-03-29
 author:     turbobin
-header-img: img/post-bg-desk.jpeg
+header-img: img/post-bg-desk.jpg
 catalog: true
 tags:
 
@@ -295,7 +295,7 @@ $ vi uwsgi.ini
 
 写入以下内容：
 
-```
+```ini
 # uwsgi.ini file
 [uwsgi]
 
@@ -382,7 +382,7 @@ net.core.somaxconn = 2048
 否则参考以下步骤：  
 https://www.cnblogs.com/wyd168/p/6636529.html
 
-1. 安装PCRE库
+1.安装PCRE库
 
 ```
 cd /home/install
@@ -394,7 +394,7 @@ make
 make install
 ```
 
-2. 安装zlib库（可选，上面 python 问题解决 zlib 问题可能已安装）
+2.安装zlib库（可选，上面 python 问题解决 zlib 问题可能已安装）
 
 ```
 cd /home/install 
@@ -406,7 +406,7 @@ make
 make install
 ```
 
-3. 安装openssl（某些 vps 默认没装ssl) （可选，上面 python 解决 ssl 问题时可能已安装）
+3.安装openssl（某些 vps 默认没装ssl) （可选，上面 python 解决 ssl 问题时可能已安装）
 
 ```
 cd /home/install
@@ -418,7 +418,7 @@ make
 make install
 ```
 
-4. 安装nginx
+4.安装nginx
 
 ```
 cd /home/install
@@ -431,13 +431,13 @@ make install
 
 #### 配置Nginx
 
-1. 新建一个网站配置文件  
+1.新建一个网站配置文件  
 
-   ` vi /usr/local/nginx/sites-available/ykd_web.conf`
+` vi /usr/local/nginx/sites-available/ykd_web.conf`
 
-   写入以下内容：
+写入以下内容：
 
-```
+```nginx
 server {
     listen      8001;
     server_name 192.168.180.130; # 如果购买了域名也可填你的域名
@@ -466,50 +466,53 @@ server {
 }
 ```
 
-2. 激活网站：
+2.激活网站：
 
-```
- ln -s /usr/local/nginx/sites-available/ykd_web.conf /usr/local/nginx/sites-enabled/ykd_web.conf
+```shell
+$ ln -s /usr/local/nginx/sites-available/ykd_web.conf /usr/local/nginx/sites-enabled/ykd_web.conf
 ```
 
 > 注：如果是源码安装的nginx，可能没有sites-available,sites-enabled文件夹，此时可以将配置文件内容直接写入nginx.conf，或者在nginx.conf加上 `'include /usr/local/nginx/site-enabled/*;'` 然后创建sites-available，sites-enabled文件夹（推荐）
 
-3. 启动nginx：
+3.启动nginx：
 
-   `sudo /usr/local/nginx/sbin/nginx` （Centos）
+`sudo /usr/local/nginx/sbin/nginx` （Centos）
 
-   `sudo /etc/init.d/nginx start` 	(ubuntu)
+`sudo /etc/init.d/nginx start` 	(ubuntu)
 
-   查看nginx是否启动：
+查看nginx是否启动：
 
-   `ps -ef|grep nginx`  
+`ps -ef|grep nginx`  
 
-   重启nginx：
+重启nginx：
 
-   `sudo /usr/local/nginx/sbin/nginx -s reload`	（Centos）
+`sudo /usr/local/nginx/sbin/nginx -s reload`	（Centos）
 
-   `sudo /etc/init.d/nginx restart`	(ubuntu)
+`sudo /etc/init.d/nginx restart`	(ubuntu)
 
-4. 此时再启动 uwsgi
+4.此时再启动 uwsgi
 
-   ```
-   cd /usr/local/src/ykd-web
-   uwsgi --ini uwsgi.ini
-   ```
+```
+cd /usr/local/src/ykd-web
+uwsgi --ini uwsgi.ini
+```
 
-5. 在window本地访问 http://192.168.180.130:8001  
-   如有报错，可查看日志文件:
-	> vi /usr/local/nginx/logs/access.log  # 访问日志 （Centos）
-	>
-	> vi /usr/local/nginx/logs/error.log # 报错日志文件
-	>
-	> 或
-	>
-	> vi /var/log/nginx/error.log  # 报错日志文件  （ubuntu）
-	>
-	> vi /var/log/nginx/access.log # 访问日志
+5.在window本地访问 http://192.168.180.130:8001  
+如有报错，可查看日志文件:
 
-6. 其他问题：  如果用的sqlite3数据库文件，发现数据库没有写权限，使用以下命令提升权限：
+> vi /usr/local/nginx/logs/access.log  # 访问日志 （Centos）
+>
+> vi /usr/local/nginx/logs/error.log # 报错日志文件
+>
+> 或
+>
+> vi /var/log/nginx/error.log  # 报错日志文件  （ubuntu）
+>
+> vi /var/log/nginx/access.log # 访问日志
+
+6.其他问题：
+
+如果用的sqlite3数据库文件，发现数据库没有写权限，使用以下命令提升权限：
 
 ```
 cd /usr/lcoal/src/ykd-web
@@ -579,7 +582,7 @@ sudo mkdir /var/log/uwsgi
 /usr/local/python3.6/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi/uwsgi-emperor.log
 ```
 
-系统启动时还未加载环境变量，所以uwsgi要写绝对路径。系统默认是以root权限来运行，查看log，如果vassals下有实例启动失败，有可能是socket文件没有权限创建，或者所在文件夹归属于用户，root没有权限读写，需要更改文件目录权限
+系统启动时还未加载环境变量，所以uwsgi要写绝对路径。系统默认是以root权限来运行，查看log，如果vassals下有实例启动失败，有可能是socket文件没有权限创建，或者所在文件夹归属于用户，root没有权限读写，需要更改文件目录权限。
 
 
 
