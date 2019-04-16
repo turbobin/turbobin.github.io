@@ -64,7 +64,9 @@ tags:
 | os.path.getmtime(path)              | 返回path所指向的文件或者目录的最后修改时间                   |
 | os.path.getsize(filename)           | 返回文件包含的字符数量                                       |
 
-**os.walk(top, topdown=True, onerror=None, followlinks=False)**
+
+
+#### os.walk(top, topdown=True, onerror=None, followlinks=False)
 
 walk方法是os模块中非常重要和强大的一个方法。可以帮助我们非常便捷地以递归方式自顶向下或者自底向上的方式遍历目录树，对每一个目录都返回一个三元元组(dirpath, dirnames, filenames)。
 
