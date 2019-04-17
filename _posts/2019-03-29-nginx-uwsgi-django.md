@@ -47,14 +47,14 @@ $ rpm -qa|grep openssl-devel
 
 若是 ubuntu 系统，可通过 apt 安装以下依赖： 
 
-```
+```shell
 $ sudo apt install build-essential checkinstall 
 $ sudo apt install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 ```
 
 ### 二、安装python 3.6， 在 /home/install 下依次执行以下命令：
 
-```
+```shell
 $ mkdir python3.6
 $ tar xfz Python-3.6.5.tgz -C /home/src/
     # 这里使用xfz命令，而不建议使用-zxvf命令，因为其释放的文件夹需要root权限才可以更改或者删除。
@@ -76,7 +76,7 @@ $ make altinstall
 
 - 手动安装 openssl-1.0.2e:
 
-```
+```shell
 $ cd /tmp
 $ wget http://www.openssl.org/source/openssl-1.0.2e.tar.gz
 $ tar xzvf openssl-1.0.2e.tar.gz
@@ -98,7 +98,7 @@ $ make && make install
 
 - 修改 ./Modules/Setup.dist
 
-```
+```python
 # Socket module helper for socket(2)
 _socket socketmodule.c  # 取消注释
 
@@ -118,7 +118,7 @@ _ssl _ssl.c \
 
 按以下步骤解决：
 
-```
+```shell
 $ cd python3.6/Python-3.6.5/Modules/zlib
 $ ./configure
 $ make install
@@ -136,7 +136,7 @@ $ ln -s /usr/local/python3.6/bin/python3.6  /usr/bin/python3
 
 同样建立 pip3.6 的软连接并升级pip（执行前先检查一下是否有其他版本的 pip，使用`pip -V`命令检查版本）
 
-```
+```shell
 $ ln -s /usr/local/python3.6/bin/pip3.6  /usr/bin/pip
 $ pip install --upgrade pip --user（联网环境下）
 # 遇到权限问题 加上 --user
@@ -144,8 +144,8 @@ $ pip install --upgrade pip --user（联网环境下）
 
 将python3.6/bin 加到环境变量
 
-```
-vi ~/.bashrc
+```shell
+$ vi ~/.bashrc
 # 在最后添加:
 PATH=/usr/local/python3.6/bin:$PATH:$HOME/bin
 export PATH
@@ -157,7 +157,7 @@ source ~/.bashrc
 
 解压 Django-2.0.6.tar.gz 和 uwsgi-2.0.17.1.tar.gz
 
-```
+```shell
 tar -zxvf Django-2.0.6.tar.gz
 tar -zxvf uwsgi-2.0.17.1.tar.gz
 # 安装Django
@@ -192,7 +192,7 @@ sudo python setup.py install
 
 - 接下来可以使用python 和 pip命令了，只在当前虚拟环境有效
 
-  **注意：如果使用pip 安装出现`Permission denied 没有权限`，此时不要加上sudo 或 --user来安装，否则会安装在系统python下，不会安装到虚拟环境中。此时的解决办法是，更改虚拟环境目录文件夹拥有者。 **
+  **注意：如果使用pip 安装出现`Permission denied 没有权限`，此时不要加上sudo 或 --user来安装，否则会安装在系统python下，不会安装到虚拟环境中。此时的解决办法是，更改虚拟环境目录文件夹拥有者。**
 
   **使用 `ls -l` 可以查看到当前目录和文件所属用户是root， 使用以下命令更改成当前用户：`sudo chown -R turbobin:turbobin django_venv`**
 
@@ -215,7 +215,7 @@ STATICFILES_DIRS = [
 
 执行命令：
 
-```
+```shell
 python manage.py collectstatic
 ```
 
@@ -253,7 +253,7 @@ python manage.py collectstatic
 
 3. 执行必要的迁移
 
-```
+```shell
 python3 manage.py makemigrations
 python3 manage.py migrate --database=db01   # 我使用了两套数据库，且设置了数据库路由
 python3 manage.py migrate	# 默认执行 default 配置的数据库
@@ -288,7 +288,7 @@ kill -9 [PID]  / killall -9 uwsgi # 强迫进程停止
 
    创建uwsgi.ini文件
 
-```
+```shell
 $ cd /usr/local/src/ykd-web
 $ vi uwsgi.ini
 ```
@@ -301,59 +301,41 @@ $ vi uwsgi.ini
 [uwsgi]
 
 # Django-related settings
-
 #http = 192.168.180.130:8000
-
 # the base directory (full path)
 
 chdir = /usr/local/src/ykd-web
 
 # Django s wsgi file
-
 module = khyx_web.wsgi
 
 # 新建一个空白的reload文件，只要输入' touch reload'项目就会重启
-
 touch-reload = /usr/local/src/ykd-web/reload
-
 # process-related settings
 
 # master
-
 master = true
 
 # listen
-
 listen = 1000 # 并发的socket 连接数。默认为100。优化需要根据系统配置
 
 # maximum number of worker processes
-
 processes = 4
-
 workers = 10  # 并发处理进程数
 
 # the socket (use the full path to be safe
-
 # 等下把sock和nginx关联起来
-
 socket = /usr/local/src/ykd-web/khyx_web.sock
-
 # socket=:8000
 
 # ... with appropriate permissions - may be needed
-
 chmod-socket = 666
-
 #chown-socket = ykd-web:www-data
-
 # clear environment on exit
-
 vacuum = true
 
 # log file
-
 daemonize = /usr/local/src/ykd-web/log/run.log
-
 disable-logging = true  // 不记录正常信息，只记录错误信息
 ```
 
@@ -380,14 +362,14 @@ disable-logging = true  // 不记录正常信息，只记录错误信息
 
 在做优化之前，发现并发数过不了100，因为 uwsgi 的socket 默认链接为100。修改`listen = 1000` 发现无法启动，此时查看系统限制连接数：
 
-```
+```shell
 $ ulimit -n
 65535
 ```
 
 再查看系统配置文件` vi /etc/sysctl.conf`，添加内容：
 
-```
+```shell
 # 定义了系统中每一个端口最大的监听队列的长度,这是个全局的参数,默认是128.
 net.core.somaxconn = 2048
 ```
@@ -406,7 +388,7 @@ https://www.cnblogs.com/wyd168/p/6636529.html
 
 1.安装PCRE库
 
-```
+```shell
 cd /home/install
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.42.tar.gz # 预先下载上传服务器
 tar -zxvf pcre-8.42.tar.gz -C /home/src/
@@ -418,7 +400,7 @@ make install
 
 2.安装zlib库（可选，上面 python 问题解决 zlib 问题可能已安装）
 
-```
+```shell
 cd /home/install 
 wget http://zlib.net/zlib-1.2.11.tar.gz
 tar -zxvf zlib-1.2.11.tar.gz -C /home/src
@@ -430,7 +412,7 @@ make install
 
 3.安装openssl（某些 vps 默认没装ssl) （可选，上面 python 解决 ssl 问题时可能已安装）
 
-```
+```shell
 cd /home/install
 wget https://www.openssl.org/source/openssl-1.0.1e.tar.gz
 tar -zxvf openssl-1.0.1e.tar.gz -C /home/src/
@@ -442,7 +424,7 @@ make install
 
 4.安装nginx
 
-```
+```shell
 cd /home/install
 tar -zxvf nginx-1.14.0.tar.gz -C /home/src
 cd /home/src/nginx-1.14.0
@@ -475,15 +457,12 @@ server {
         uwsgi_pass  unix:///usr/local/src/ykd-web/khyx_web.sock;
         include     /etc/nginx/uwsgi_params;
         
-         # when a client closes the connection then keep the channel to uwsgi open.
- Otherwise uwsgi throws an IOError
+         # when a client closes the connection then keep the channel to uwsgi open.Otherwise uwsgi throws an IOError
         uwsgi_ignore_client_abort on;
         
         uwsgi_send_timeout 600;        # 指定连接到后端uWSGI的超时时间。
-        uwsgi_connect_timeout 600;     # 指定向uWSGI传送请求的超时时间，完成握手后
-向uWSGI传送请求的超时时间。
-        uwsgi_read_timeout 600;        # 指定接收uWSGI应答的超时时间，完成握手后接
-收uWSGI应答的超时时间。
+        uwsgi_connect_timeout 600;     # 指定向uWSGI传送请求的超时时间，完成握手后向uWSGI传送请求的超时时间。
+        uwsgi_read_timeout 600;        # 指定接收uWSGI应答的超时时间，完成握手后接收uWSGI应答的超时时间。
     }
 }
 ```
@@ -514,7 +493,7 @@ $ ln -s /usr/local/nginx/sites-available/ykd_web.conf /usr/local/nginx/sites-ena
 
 4.此时再启动 uwsgi
 
-```
+```shell
 cd /usr/local/src/ykd-web
 uwsgi --ini uwsgi.ini
 ```
@@ -536,7 +515,7 @@ uwsgi --ini uwsgi.ini
 
 如果用的sqlite3数据库文件，发现数据库没有写权限，使用以下命令提升权限：
 
-```
+```shell
 cd /usr/lcoal/src/ykd-web
 sudo chmod 777 db.sqlite3   # 不安全，可改成666
 ```
@@ -569,7 +548,7 @@ uWSGI可以运行在‘emperor’模式。在这种模式下，它会监控uWSGI
 
 每当修改了一个配置文件，emperor将会自动重启 vassal.
 
-```
+```shell
 # create a directory for the vassals
 sudo mkdir /etc/uwsgi
 sudo mkdir /etc/uwsgi/vassals
@@ -594,20 +573,20 @@ uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
 
 对于许多系统来说，最简单 (如果不是最好的)的方式是使用 rc.local 文件。
 
-```
-sudo mkdir /var/log/uwsgi
+```shell
+$ sudo mkdir /var/log/uwsgi
 ```
 
 编辑 /etc/rc.local 然后在”exit 0”行前添加:
 
-```
-/usr/local/python3.6/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi/uwsgi-emperor.log
+```shell
+$ /usr/local/python3.6/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi/uwsgi-emperor.log
 ```
 
 系统启动时还未加载环境变量，所以uwsgi要写绝对路径。系统默认是以root权限来运行，查看log，如果vassals下有实例启动失败，有可能是socket文件没有权限创建，或者所在文件夹归属于用户，root没有权限读写，需要更改文件目录权限。
 
 
 
-
+<p>&nbsp;</p>
 
 > 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。
