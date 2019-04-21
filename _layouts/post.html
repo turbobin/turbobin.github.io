@@ -25,9 +25,16 @@ layout: default
 
 <div class="post-share">
   <div class="container">
-    <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}" target="_blank" class="post-share-icon twitter"></a>
-    <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon evernote"></a>
-    <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon weibo"></a>
+    {% if page.previous.url %}
+    <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}" class="post-share-icon evernote">
+        <span>上一篇:{{page.previous.title}}</span>
+    </a>
+    {% endif %}
+    {% if page.next.url %}
+    <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}"class="post-share-icon evernote">
+        <span>下一篇:{{page.next.title}}</span>
+    </a>
+    {% endif %}
   </div>
 </div>
 
