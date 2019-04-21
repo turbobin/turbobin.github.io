@@ -6,6 +6,7 @@ date:       2018-12-05
 author:     turbobin
 header-img: 
 catalog: true
+category: 技术
 tags:
     - Python 爬虫
 ---

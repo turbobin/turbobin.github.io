@@ -6,6 +6,7 @@ date:       2018-12-20
 author:     turbobin
 header-img: img/post-bg-debug.jpg
 catalog: true
+category: 技术
 tags:
     - [微服务, spring boot, dubbo]
 ---

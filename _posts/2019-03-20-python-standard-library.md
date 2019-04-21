@@ -6,6 +6,7 @@ date:       2019-03-20
 author:     turbobin
 header-img: img/post-bg-ioses.jpg
 catalog: true
+category: 技术
 tags:
 
    - [Python ]

@@ -6,6 +6,7 @@ date:       2019-04-21
 author:     turbobin
 header-img: img/post-bg-desk.jpg
 catalog: true
+category: 技术
 tags:
 
    - [Web]

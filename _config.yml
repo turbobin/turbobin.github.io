@@ -1,6 +1,6 @@
 # Site settings
 title: turbobin's Blog
-email: turbobin@gmail.com
+email: turbobin@foxmail.com
 #description: > # this means to ignore newlines until "baseurl:"
 #  turbobin's Blog
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -34,7 +34,7 @@ favicon: /images/favicon.ico
 #   url: yansu.org
 
 # Build settings
-permalink: /:year/:month/:day/:title.html
+permalink: /:year/:month/:day/:title
 markdown: kramdown
 highlighter: rouge
 mathjax: disabled

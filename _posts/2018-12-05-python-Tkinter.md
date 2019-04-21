@@ -6,6 +6,7 @@ date:       2018-12-05
 author:     turbobin
 header-img: img/post-bg-messdesk.jpg
 catalog: true
+category: 工具
 tags:
     - python tkinter
 ---
@@ -212,10 +213,8 @@ if __name__ == '__main__':
 3.把文件 openlist.json (固定命名) 放到 OpenTool.exe 文件同级目录下，可以和原来的 openlist.json 做一下合并，现在打开软件，可以看到书签已经加载进来了。
 ![](https://i.imgur.com/Fvxqm0t.png)
 
-
 --------------------
 欢迎 Star 和 Fork ~  ^_^
-
 
 ---
 **关注我的公众号，和我一起进步：**

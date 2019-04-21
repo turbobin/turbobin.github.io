@@ -6,6 +6,7 @@ date:       2018-12-01
 author:     turbobin
 header-img: img/post-bg-rwd.jpg
 catalog: true
+category: 其他
 tags:
     - other
 ---

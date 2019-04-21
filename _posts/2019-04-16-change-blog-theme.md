@@ -6,6 +6,7 @@ date:       2019-04-16
 author:     turbobin
 header-img: img/post-bg-desk.jpg
 catalog: true
+category: 资源
 tags:
 
    - [Blog]

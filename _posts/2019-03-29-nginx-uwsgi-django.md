@@ -6,6 +6,7 @@ date:       2019-03-29
 author:     turbobin
 header-img: img/post-bg-desk.jpg
 catalog: true
+category: 技术
 tags:
 
    - [Python,Django]

@@ -6,6 +6,7 @@ date:       2018-12-15
 author:     turbobin
 header-img: img/post-bg-rwd.jpg
 catalog: true
+category: 技术
 tags:
     - 微服务
 ---

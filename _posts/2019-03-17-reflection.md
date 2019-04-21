@@ -6,6 +6,7 @@ date:       2019-03-17
 author:     turbobin
 header-img: img/post-bg-rwdk.jpg
 catalog: true
+category: 其他
 tags:
 
    - [other]
