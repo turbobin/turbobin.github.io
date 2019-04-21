@@ -13,7 +13,7 @@ tags:
 ### 简述 ###
 
 在“[基于SpringBoot 整合Mybatis]({{site.url}}/2018/12/17/springboot-with-mybatis/)” 的案例中，把服务的接口、实现类和服务的调用都放在了一起。随着项目的扩展，服务越来越多，显然会不利于项目的维护，因此需要进行模块的拆分，大体可拆分成三个大的模块：服务公共接口、服务提供者（实现类）、服务消费者（调用类）。但是还有一个问题，如果服务部署在多台机器上，服务消费者只能通过ip地址和端口去调用服务，如果服务部署有变更，则需要去修改地址，耦合性太强。因此需要一个注册中心，每个服务都往这个中心注册自己，同时暴露服务接口，服务消费者只需要在注册中心订阅服务，就可以通过远程调用的方式调用服务的功能（RPC），这个过程叫做服务的治理，采用服务的注册与发现机制。Dubbo就是一个专注于RPC的服务治理框架，它的架构图如下：
-![]({{site.url}}/img/java/springboot-27.png)
+![]({{site.url}}/images/java/springboot-27.png)
 
 **节点角色说明**
 <table>
@@ -64,16 +64,16 @@ Dubbo的注册中心一般使用 zookeeper，也是官方的推荐，可用于�
 可以上传Linux解压使用，也可以在 Windows 本地解压做测试使用（依赖JDK启动）。
 
 以 Windows 为例，解压 tar 包，拷贝一份 conf/zoo_sample.cfg，改成zoo.cfg
-![]({{site.url}}/img/java/springboot-28.png)
+![]({{site.url}}/images/java/springboot-28.png)
 打开zoo.cfg，修改：
-![]({{site.url}}/img/java/springboot-29.png)
+![]({{site.url}}/images/java/springboot-29.png)
 在根目录下创建data和log目录。
 
 进入bin目录，Windows双击`zkServer.cmd`启动，Linux下使用“`./zkServer.sh start`”启动。
 
 #### Step2：创建maven项目 ####
 结构如下：
-![]({{site.url}}/img/java/springboot-30.png)
+![]({{site.url}}/images/java/springboot-30.png)
 
 **parent: pom.xml。统一管理依赖版本**
 
@@ -221,7 +221,7 @@ Dubbo的注册中心一般使用 zookeeper，也是官方的推荐，可用于�
 #### Step3：公共接口 ####
 
 存放User实体类和UserService接口
-![]({{site.url}}/img/java/springboot-31.png)
+![]({{site.url}}/images/java/springboot-31.png)
 
 **common-api: pom.xml**
 
@@ -296,7 +296,7 @@ public interface UserService {
 
 #### Step4：服务提供者 ####
 
-![]({{site.url}}/img/java/springboot-32.png)
+![]({{site.url}}/images/java/springboot-32.png)
 
 Mapper的生成参考“[基于Spring Boot整合Mybatis，与数据库交互]({{site.url}}/2018/12/17/springboot-with-mybatis/)”一节，注意把User实体生成到`com.ccb.dubbo.common.model`中( generatorConfig.xml 中使用绝对路径指定目录)。
 
@@ -510,7 +510,7 @@ mybatis.type-aliases-package=com.ccb.dubbo.common.model
 ```
 
 #### Step5：服务消费者 ####
-![]({{site.url}}/img/java/springboot-33.png)
+![]({{site.url}}/images/java/springboot-33.png)
 
 **pom.xml**
 
@@ -633,14 +633,14 @@ public class Application {
 #### Step6: 测试 ####
 
 下面分别启动服务提供者和服务消费者（检查是否先启动了zookeeper）
-![]({{site.url}}/img/java/springboot-34.png)
+![]({{site.url}}/images/java/springboot-34.png)
 
 可见，调用成功了。
 
 在浏览器中测试：
-![]({{site.url}}/img/java/springboot-35.png)
-![]({{site.url}}/img/java/springboot-36.png)
-![]({{site.url}}/img/java/springboot-37.png)
+![]({{site.url}}/images/java/springboot-35.png)
+![]({{site.url}}/images/java/springboot-36.png)
+![]({{site.url}}/images/java/springboot-37.png)
 
 测试成功。
 

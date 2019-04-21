@@ -74,7 +74,7 @@ IDE 开发工具：IDEA专业版。	SpringBoot 项目这里强烈推荐 IDEA，�
 
 ```
 可以看到，只需要继承`spring-boot-starter-parent`，Spring 的开发包都引进来了
-![]({{site.url}}/img/java/springboot-01.png)
+![]({{site.url}}/images/java/springboot-01.png)
 
 在`src/main/java`目录下新建一个`com.example.demo`包，在此包下新建一个`DemoApplication.java`
 
@@ -98,16 +98,16 @@ public class DemoApplication {
 #### 2.	利用 IDEA Spring Initializr 自动构建 Spring Boot 项目
 其原理是调用官网的脚手架接口快速构建，不过用IDEA从构建到导入项目一步到位，更方便快捷。  
 官网快速构建：打开[https://start.spring.io/](https://start.spring.io/)
-![]({{site.url}}/img/java/springboot-02.png)
+![]({{site.url}}/images/java/springboot-02.png)
 
 IDEA 构建:
-![]({{site.url}}/img/java/springboot-03.png)
+![]({{site.url}}/images/java/springboot-03.png)
 
 填写 maven 项目中的 groupId 和 artifaId，以及其他 version、package信息
-![]({{site.url}}/img/java/springboot-04.png)
+![]({{site.url}}/images/java/springboot-04.png)
 
 选择 Spring Boot 版本，左边是可选的依赖（也包含了很多 Spring Cloud 依赖）
-![]({{site.url}}/img/java/springboot-05.png)
+![]({{site.url}}/images/java/springboot-05.png)
 
 一路 Next，就生成了基本的 Spring Boot 应用。
 

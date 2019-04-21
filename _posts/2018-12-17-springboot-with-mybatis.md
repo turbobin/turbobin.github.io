@@ -125,7 +125,7 @@ CREATE TABLE `users` (
 ```
 
 插入一些数据：
-![]({{site.url}}/img/java/springboot-09.png)
+![]({{site.url}}/images/java/springboot-09.png)
 
 下面有两种方法来生成mybatis代码：
 
@@ -182,19 +182,19 @@ CREATE TABLE `users` (
 
 ```
 点击工具栏上的 Run——EditConfigrations,选择 maven（如果没有就点 +，选择 maven）
-![]({{site.url}}/img/java/springboot-10.png)
-![]({{site.url}}/img/java/springboot-11.png)
+![]({{site.url}}/images/java/springboot-10.png)
+![]({{site.url}}/images/java/springboot-11.png)
 
 选择名称，点击运行
-![]({{site.url}}/img/java/springboot-12.png)
+![]({{site.url}}/images/java/springboot-12.png)
 这样就自动生成了实体类User，UserMapper（DAO）和 UserMapper.xml
 
 **2. 命令行 + mybatis-generator-core jar包**
 
 下载`mybatis-generator-core-1.3.5.jar`包，和 generatorConfig.xml 一起放在 src 同级目录下，在命令行敲如命令：  
 `java –jar mybatis-generator-core-1.3.5.jar –configfile generatorConfig.xml -overwrite`
-![]({{site.url}}/img/java/springboot-13.png)
-![]({{site.url}}/img/java/springboot-14.png)
+![]({{site.url}}/images/java/springboot-13.png)
+![]({{site.url}}/images/java/springboot-14.png)
 
 接下来创建 Service 和 Controller：
 
@@ -361,11 +361,11 @@ mybatis.type-aliases-package=com.ccb.springboot.entity
 ```
 
 启动SpringbootMybatisApplication.java，打开浏览器测试：
-![]({{site.url}}/img/java/springboot-15.png)
-![]({{site.url}}/img/java/springboot-16.png)
+![]({{site.url}}/images/java/springboot-15.png)
+![]({{site.url}}/images/java/springboot-16.png)
 
 最后，看一下整个项目的结构：
-![]({{site.url}}/img/java/springboot-17.png)
+![]({{site.url}}/images/java/springboot-17.png)
 
 到这里就实现了 Spring Boot 和 mybatis 的整合，实现了与数据库的交互，不需要 mybatis 的 xml 文件，只需要很少的配置就可以完成。
 

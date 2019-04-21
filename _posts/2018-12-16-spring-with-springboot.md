@@ -13,7 +13,7 @@ tags:
 下面运用 Spring 的分层逻辑来开发一个简单的Spring项目。
 
 **项目结构：**
-![]({{site.url}}/img/java/springboot-06.png)
+![]({{site.url}}/images/java/springboot-06.png)
 
 **User 实体类：**
 
@@ -110,11 +110,11 @@ public class UserController {
 ```
 
 配置文件有两种形式，默认是 application.properties，也可以用 application.yml：
-![]({{site.url}}/img/java/springboot-07.png)
+![]({{site.url}}/images/java/springboot-07.png)
 
 到这里，一个基本的 Spring 应用就构建完了。  
 启动DemoApplication.java，用浏览器测试：
-![]({{site.url}}/img/java/springboot-08.png)
+![]({{site.url}}/images/java/springboot-08.png)
 
 >这里 json 的数据格式化推荐一个 Chrome 插件：极简 json 。非常好用！
 

@@ -101,9 +101,9 @@ public Object findAllUsers(
 
 **Step5：测试（推荐一个Chrome插件：`基于REST的web服务客户端`，POSTman软件的插件版）**
 
-![]({{site.url}}/img/java/springboot-18.png)
-![]({{site.url}}/img/java/springboot-19.png)
-![]({{site.url}}/img/java/springboot-20.png)
+![]({{site.url}}/images/java/springboot-18.png)
+![]({{site.url}}/images/java/springboot-19.png)
+![]({{site.url}}/images/java/springboot-20.png)
 
 可以使用默认参数，也可以使用 “page”、“pagesize” 参数的自由组合进行查询。
 

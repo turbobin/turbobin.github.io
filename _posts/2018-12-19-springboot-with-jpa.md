@@ -27,7 +27,7 @@ IDE开发工具：IDEA 专业版。
 
 ```
 或者在IDEA中利用脚手架构建Spring Boot项目时勾选JPA
-![]({{site.url}}/img/java/springboot-21.png)
+![]({{site.url}}/images/java/springboot-21.png)
 
 完整 POM.xml
 
@@ -268,14 +268,14 @@ public class UserController {
 
 开启启动类，用浏览器测试：
 
-![]({{site.url}}/img/java/springboot-22.png)
-![]({{site.url}}/img/java/springboot-23.png)
-![]({{site.url}}/img/java/springboot-24.png)
-![]({{site.url}}/img/java/springboot-25.png)
+![]({{site.url}}/images/java/springboot-22.png)
+![]({{site.url}}/images/java/springboot-23.png)
+![]({{site.url}}/images/java/springboot-24.png)
+![]({{site.url}}/images/java/springboot-25.png)
 
 最后的项目结构：
 
-![]({{site.url}}/img/java/springboot-26.png)
+![]({{site.url}}/images/java/springboot-26.png)
 
 **小结：**
 

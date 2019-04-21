@@ -89,7 +89,7 @@ public class Application {
 ```
 
 服务提供者就修改完成了，启动试一下：
-![]({{site.url}}/img/java/springboot-38.png)
+![]({{site.url}}/images/java/springboot-38.png)
 如果出现了zookeeper相关信息，一般就表示注册没问题。
 
 **服务消费者 springboot-dubbo-consumer：**
@@ -181,8 +181,8 @@ public class Application {
 ```
 
 启动测试：
-![]({{site.url}}/img/java/springboot-39.png)
-![]({{site.url}}/img/java/springboot-40.png)
+![]({{site.url}}/images/java/springboot-39.png)
+![]({{site.url}}/images/java/springboot-40.png)
 可以看到，调用成功了。
 
 ② 在dubbo官方文档的推荐用法中，其实不推荐使用dubbo.properties，而推荐使用对应的xml配置：
