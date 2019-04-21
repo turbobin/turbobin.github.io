@@ -214,6 +214,3 @@ html_template = """
 关注本公众号「如暘」，后台回复：**Python指南** 即可免费获取，不套路。之后也会送出其他教程，敬请期待。
 
 ---
-**关注我的公众号，和我一起进步：**
-
-![](https://turbobin.github.io/img/qrcode.jpg)

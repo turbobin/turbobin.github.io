@@ -34,7 +34,7 @@ favicon: /images/favicon.ico
 #   url: yansu.org
 
 # Build settings
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
 markdown: kramdown
 highlighter: rouge
 mathjax: disabled
