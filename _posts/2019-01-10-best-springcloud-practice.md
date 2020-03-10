@@ -1292,8 +1292,8 @@ eureka.client.fetchRegistry=true
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 ```
 * 查看结果:
-![](http://plsbxlixi.bkt.clouddn.com/Fmbygx3TqhE8aM0b-JC-Tr06y7jS)
-![](http://plsbxlixi.bkt.clouddn.com/FpQ9qzMPr-8t0z80KacIVJ35PSyP)
+  ![](http://plsbxlixi.bkt.clouddn.com/Fmbygx3TqhE8aM0b-JC-Tr06y7jS)
+  ![](http://plsbxlixi.bkt.clouddn.com/FpQ9qzMPr-8t0z80KacIVJ35PSyP)
 
 #### 将服务注册到 Eureka 集群
 修改配置文件，只需要添加集群的地址，用逗号隔开:

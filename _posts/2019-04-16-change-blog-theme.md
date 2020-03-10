@@ -20,9 +20,9 @@ tags:
 
 从四个月前开通博客以来，一直用的一款 Jekyll 的经典主题，它长这样：
 
-![20190416233725](https://ws3.sinaimg.cn/large/9f999f0bly1g24wia61pjj21df0m94qp.jpg)
+![20190416233725](https://tva3.sinaimg.cn/large/9f999f0bly1g24wia61pjj21df0m94qp.jpg)
 
-![20190416234415](https://wx3.sinaimg.cn/large/9f999f0bly1g24wmtvzrij21dj0fxtca.jpg)
+![20190416234415](https://tvax4.sinaimg.cn/large/9f999f0bly1g24wmtvzrij21dj0fxtca.jpg)
 
 首页和文章都有图片置顶，打开文章加载特别缓慢，特别影响体验。
 
@@ -42,11 +42,11 @@ tags:
 
 域名绑定 GitHub Pages 也挺简单，登录阿里云控制台 -- 域名 -- 选择购买好的域名，点击解析 -- 添加记录，按如下方式填写
 
-![20190417002003](https://ws1.sinaimg.cn/large/9f999f0bly1g24xotnypsj217d0kfmye.jpg)
+![20190417002003](https://tvax3.sinaimg.cn/large/9f999f0bly1g24xotnypsj217d0kfmye.jpg)
 
 之后在 `CNAME` 文件中填写上域名就可以解析了，或者在 GitHub Pages Settings 页面也可以设置。
 
-![20190417003016](https://wx2.sinaimg.cn/large/9f999f0bly1g24xyrlnpzj20wi0l4ab4.jpg)
+![20190417003016](https://tva4.sinaimg.cn/large/9f999f0bly1g24xyrlnpzj20wi0l4ab4.jpg)
 
 之后大概等十多分钟会自动生效。
 
@@ -59,5 +59,4 @@ tags:
 
 
 <p>&nbsp;</p>
-
 > 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。

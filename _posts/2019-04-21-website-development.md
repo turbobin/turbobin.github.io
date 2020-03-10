@@ -20,13 +20,13 @@ tags:
 
 最初的小型网站采用 LMAP（Linux + MySQL + Apache + PHP/Python）架构，应用程序、数据库、文件等所有资源都部署在一台服务器上。
 
-![微信图片_20190421172610](https://wx3.sinaimg.cn/large/9f999f0bly1g2ae307cd0j20l40fqaao.jpg)
+![](https://gitee.com/turbobin_cao/images/raw/master/20200310225503.png)
 
 ### 应用服务和数据服务分离
 
 当用户访问量增大的时候，单一的服务器无法满足性能要求，这时候就需要将应用和数据进行分离，使用不同特性的服务器承担不同的角色，比如，应用服务器需要处理大量的业务逻辑，因此需要更快更强大的 CPU；数据库服务器需要快速磁盘检索和数据缓存，需要更快的磁盘和更大的内存；文件服务器需要存储大量用户上传的文件，因此需要更大的硬盘。
 
-![微信图片_201904211726101](https://ws3.sinaimg.cn/large/9f999f0bly1g2aemr29nzj20rj0jwt9c.jpg)
+![微信图片_201904211726101](https://tvax4.sinaimg.cn/large/9f999f0bly1g2aemr29nzj20rj0jwt9c.jpg)
 
 ### 使用缓存改善网站性能
 
@@ -34,7 +34,7 @@ tags:
 
 网站使用的缓存分为两种：应用服务器的本地缓存，和在专门的分布式缓存服务器上的远程缓存。本地缓存访问速度快一些，但是受应用服务器内存限制，远程分布式缓存可以使用集群的方式，理论上可以做到不受内存容量的限制。
 
-![微信图片_201904211726102](https://ws2.sinaimg.cn/large/9f999f0bly1g2af5ktfp3j20sq0sjjsn.jpg)
+![微信图片_201904211726102](https://tva4.sinaimg.cn/large/9f999f0bly1g2af5ktfp3j20sq0sjjsn.jpg)
 
 ### 使用应用服务器集群改善网站的并发能力
 
@@ -42,7 +42,7 @@ tags:
 
 使用集群是解决网站高并发和海量数据问题的常用手段。通过增加应用服务器可以改善负载压力，实现系统的可伸缩性。通过负载均衡调度器，可将用户访问请求分发到应用服务器集群中的任何一台服务器上。
 
-![微信图片_20190421172635](http://wx3.sinaimg.cn/large/9f999f0bly1g2afg1p870j20xc0n5t9r.jpg)
+![微信图片_20190421172635](https://tva1.sinaimg.cn/large/9f999f0bly1g2afg1p870j20xc0n5t9r.jpg)
 
 ### 数据库读写分离
 
@@ -59,7 +59,7 @@ tags:
 
 
 
-![微信图片_201904211726351](https://wx3.sinaimg.cn/large/9f999f0bly1g2afxp6sbwj20yx0qz75q.jpg)
+![微信图片_201904211726351](https://tvax3.sinaimg.cn/large/9f999f0bly1g2afxp6sbwj20yx0qz75q.jpg)
 
 
 
@@ -69,25 +69,25 @@ tags:
 
 反向代理和 CDN 的基本原理都是缓存，区别在于，CDN 部署在网络提供商的机房，用户可以从距离自己最近的机房获取数据；而反向代理部署在网站的中心机房，当用户请求到达中心机房后，首先访问的是反向代理服务器，如果反向代理服务器中缓存了用户请求的资源，就将其直接返回给用户。
 
-![微信图片_201904211726352](https://ws1.sinaimg.cn/large/9f999f0bly1g2agc37dc1j20xc0nuta4.jpg)
+![微信图片_201904211726352](https://tvax4.sinaimg.cn/large/9f999f0bly1g2agc37dc1j20xc0nuta4.jpg)
 
 ### 使用分布式文件系统和分布式数据库系统
 
 当数据规模非常庞大的时候，需要使用分布式数据库将网站数据库进行拆分，文件系统也一样，需要使用分布式文件系统。
 
-![微信图片_201904211726353](https://wx4.sinaimg.cn/large/9f999f0bly1g2agh6i6jhj20xc0mcwfx.jpg)
+![微信图片_201904211726353](https://tva1.sinaimg.cn/large/9f999f0bly1g2agh6i6jhj20xc0mcwfx.jpg)
 
 ### 使用 NoSQL 和搜索引擎
 
 使用 NoSQL 和搜索引擎技术可以更方便地解决分布式数据存储和检索的问题。
 
-![微信图片_201904211726354](https://ws3.sinaimg.cn/large/9f999f0bly1g2agl37sjsj20y70mqdhi.jpg)
+![微信图片_201904211726354](https://tva3.sinaimg.cn/large/9f999f0bly1g2agl37sjsj20y70mqdhi.jpg)
 
 ### 业务拆分
 
 为了应对日益复杂的业务场景，网站可以使用分而治之的手段将整个网站的业务划分，拆分成不同的应用，每个应用独立部署，单独维护。应用直接通过一个超链接建立关系，也可以通过消息队列进行数据分发。
 
-![微信图片_201904211726355](https://ws3.sinaimg.cn/large/9f999f0bly1g2agq7tm9oj20xc0isgn5.jpg)
+![微信图片_201904211726355](https://tva3.sinaimg.cn/large/9f999f0bly1g2agq7tm9oj20xc0isgn5.jpg)
 
 ### 分布式服务
 
@@ -95,12 +95,11 @@ tags:
 
 这时可以把应用系统中许多相同的业务操作进一步提取出来，独立部署，比如用户管理，商品管理。由这些可复用的业务连接数据库，提供共用的业务服务。
 
-![微信图片_201904211726356](https://wx4.sinaimg.cn/large/9f999f0bly1g2ah0bo3mbj20xc0iv75x.jpg)
+![微信图片_201904211726356](https://tva4.sinaimg.cn/large/9f999f0bly1g2ah0bo3mbj20xc0iv75x.jpg)
 
 
 
 大型网站的架构演化到这里，基本上大多数技术问题都得以解决。许多大型网站发展到一定阶段都开始建设云计算平台，将计算作为一种资源出售，中小网站不需要再关心技术架构问题，只需要按需购买，就可以获得更大的存储空间和更多的计算资源。
 
 <p>&nbsp;</p>
-
 > 本文首发于 [turbobin's Blog](https://turbobin.github.io/) 。转载请注明出处，附上本原文链接， 谢谢合作。
