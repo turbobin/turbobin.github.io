@@ -8,6 +8,7 @@ $(function() {
       main    = $('#main'),
       menu    = $('#menu'),
       posttoc = $('#post-toc-menu'),
+	  postshare = $('#post-share'),
       x1, y1;
 
   // run this function after pjax load.
@@ -118,6 +119,10 @@ $(function() {
   // right toc
   posttoc.on('click', function() {
     $('#post-toc').toggleClass('open');
+  });
+  
+  postshare.on('click', function() {
+    menu.add(sidebar).add(main).removeClass('open');
   });
 
   // Search

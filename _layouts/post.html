@@ -23,15 +23,17 @@ layout: default
 
 </article>
 
-<div class="post-share">
+<div class="post-share" id="post-share">
   <div class="container">
     {% if page.previous.url %}
     <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}" class="post-share-icon evernote">
         <span>上一篇:{{page.previous.title}}</span>
     </a>
     {% endif %}
+    <br>
+    <br>
     {% if page.next.url %}
-    <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}"class="post-share-icon evernote">
+    <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}" class="post-share-icon evernote">
         <span>下一篇:{{page.next.title}}</span>
     </a>
     {% endif %}
