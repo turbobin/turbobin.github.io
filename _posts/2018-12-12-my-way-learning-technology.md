@@ -11,7 +11,7 @@ tags:
     - 
 ---
 
-公众号已经好几天没更新了，最初的定位是专注 Python 的技术积累，所以取名叫「Python手记」。现在由于项目的变动，老大问我愿不愿意转技术，去做 Java 开发，我一开始的想法是拒绝的，但是还是答应先考虑一下。确实需要好好考虑，重新审视自己的定位了。
+工作多年，目前也已经接触到了不少的技术了，在此总结一下。
 
 ## COBOL
 
@@ -52,4 +52,4 @@ Python 一上手就停不下来了，一开始折腾了爬虫，打飞机小游�
 
 我花了一周的时间学习了 maven（一个包管理工具，相当于 Python 的 pip），还有 Spring 的基本思想和配置以及发展历史，还有与数据库交互的 ORM 框架 mybatis。开发工具我选择了 IntelliJ IDEA，和之前 Python 用的 Pycharm 是同一家公司的，用起来应该比较好上手，专业版的破解方法和 Pycharm 差不多，具体看这篇文章 [Pycharm 和 IntelliJ IDEA 永久激活方法](https://turbobin.github.io/2018/12/03/activate-you-idea/)
 
-接下来就可以开始学习 Spring Boot，Dubbo框架，和 Spring Cloud了。后面有了学习积累再慢慢更新吧。
+接下来开始学习 Spring Boot，Dubbo框架，和 Spring Cloud了。后面有了学习积累再慢慢更新吧。
