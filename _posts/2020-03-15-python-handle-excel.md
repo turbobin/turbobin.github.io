@@ -7,8 +7,8 @@ author:     turbobin
 header-img: 
 catalog: true
 category: 技术
-tags: Python
-    - 
+tags: 
+    - Python
 ---
 
 碰到一个简单却有点复杂的需求，在此稍微记录一下。
@@ -36,50 +36,50 @@ import json
 TRANSLATE_DICT = {}
 
 def read_excel_content(languge, filename):
-	filename = os.path.join(os.path.dirname(__file__), filename)
-	workbook = xlrd.open_workbook(filename)
-	tables = workbook.sheets()
-	# print "tables:", len(tables)
-	num = 300
-	for table in tables:
-		nrows = table.nrows
-		ncols = table.ncols
-		for i in range(1, nrows):
-			languge_dict = {}
-			zh = table.cell(i, 3).value
-			la = table.cell(i, 4).value
-			languge_dict["zh"] = zh.encode("utf-8")
-			languge_dict[languge] = la.encode("utf-8")
-			# print json.dumps(languge_dict, ensure_ascii=False)
-			if num in TRANSLATE_DICT:
-				TRANSLATE_DICT[num].update(languge_dict)
-			else:
-				TRANSLATE_DICT[num] = languge_dict
+    filename = os.path.join(os.path.dirname(__file__), filename)
+    workbook = xlrd.open_workbook(filename)
+    tables = workbook.sheets()
+    # print "tables:", len(tables)
+    num = 300
+    for table in tables:
+        nrows = table.nrows
+        ncols = table.ncols
+        for i in range(1, nrows):
+            languge_dict = {}
+            zh = table.cell(i, 3).value
+            la = table.cell(i, 4).value
+            languge_dict["zh"] = zh.encode("utf-8")
+            languge_dict[languge] = la.encode("utf-8")
+            # print json.dumps(languge_dict, ensure_ascii=False)
+            if num in TRANSLATE_DICT:
+                TRANSLATE_DICT[num].update(languge_dict)
+            else:
+                TRANSLATE_DICT[num] = languge_dict
 
-			num += 1
+            num += 1
 
 def read_excels():
-	dic = {
-		"fr": u"法语.xls",
-		"bn": u"孟加拉语.xlsx",
-		"pt": u"葡萄牙语.xls",
-		"te": u"泰卢固语.xlsx",
-		"ta": u"泰米尔语.xlsx",
-		"th": u"泰语.xls",
-		"es": u"西班牙语.xls",
-		"hi": u"印地语.xlsx",
-		"id": u"印尼语.xls",
-		"en": u"英语.xlsx",
-		"vi": u"越南语.xls"
-	}
-	for key, value in dic.items():
-		read_excel_content(key, value)
-	# print json.dumps(TRANSLATE_DICT, ensure_ascii=False, indent=4)
-	with open("plan_content.json", "w") as f:
-		json.dump(TRANSLATE_DICT, f, indent=4, ensure_ascii=False)
+    dic = {
+        "fr": u"法语.xls",
+        "bn": u"孟加拉语.xlsx",
+        "pt": u"葡萄牙语.xls",
+        "te": u"泰卢固语.xlsx",
+        "ta": u"泰米尔语.xlsx",
+        "th": u"泰语.xls",
+        "es": u"西班牙语.xls",
+        "hi": u"印地语.xlsx",
+        "id": u"印尼语.xls",
+        "en": u"英语.xlsx",
+        "vi": u"越南语.xls"
+    }
+    for key, value in dic.items():
+        read_excel_content(key, value)
+    # print json.dumps(TRANSLATE_DICT, ensure_ascii=False, indent=4)
+    with open("plan_content.json", "w") as f:
+        json.dump(TRANSLATE_DICT, f, indent=4, ensure_ascii=False)
 
 if __name__ == '__main__':
-	read_excels()
+    read_excels()
 ```
 
 最后输出一个 json 文件：
