@@ -68,6 +68,7 @@ $(function() {
     {% endif %}
     // your scripts
   };
+  menu.add(sidebar).add(main).removeClass('open');
   afterPjax();
 
   // NProgress
@@ -113,7 +114,7 @@ $(function() {
   // Menu
   menu.on('click', function() {
     $(this).add(sidebar).add(menu).add(main).toggleClass('open');
-	$('#post-toc').toggleClass('open');
+	//$('#post-toc').toggleClass('open');
   });
 
   // right toc
@@ -121,6 +122,10 @@ $(function() {
     $('#post-toc').toggleClass('open');
   });
   
+  main.on('click', function() {
+    menu.add(sidebar).add(main).removeClass('open');
+  });
+
   postshare.on('click', function() {
     menu.add(sidebar).add(main).removeClass('open');
   });
