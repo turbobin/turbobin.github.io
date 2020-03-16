@@ -68,7 +68,7 @@ $(function() {
     {% endif %}
     // your scripts
   };
-  menu.add(sidebar).add(main).removeClass('open');
+  //menu.add(sidebar).add(main).removeClass('open');
   afterPjax();
 
   // NProgress
@@ -114,7 +114,7 @@ $(function() {
   // Menu
   menu.on('click', function() {
     $(this).add(sidebar).add(menu).add(main).toggleClass('open');
-	//$('#post-toc').toggleClass('open');
+	$('#post-toc').removeClass('open');
   });
 
   // right toc
