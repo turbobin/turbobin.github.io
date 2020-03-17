@@ -75,7 +75,7 @@ $(function() {
   NProgress.configure({ showSpinner: false });
 
   // Pjax
-  $(document).pjax('#sidebar-avatar, .toc-link', '#main', {
+  $(document).pjax('#sidebar-avatar, .toc-link, a.post-share-icon.evernote', '#main', {
     fragment: '#main',
     timeout: 3000
   });
