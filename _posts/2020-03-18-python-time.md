@@ -124,17 +124,17 @@ def date_format(date, f="YYYY-MM-DD HH:mm:ss"):
 
 
 if __name__ == '__main__':
-    print '1:', get_day_id(0)
-    print '2:', get_day_id_by_ts(1563811200, 0)
-    print '3:', get_ts_by_day_id(20200312, -1)
-    print '4:', get_week_id()
-    print '5:', get_week_start_day_id(0)
-    print '6:', get_week_end_day_id(0)
-    print '7:', get_month_start_day_id(0)
-    print '8:', get_month_end_day_id(-3)
-    print '9:', get_relative_date(datetime.now())
-    print '10:', get_humanize_time(time.time() - 60, "zh")
-    print '11:', date_format(time.time())
+    print('1:', get_day_id(0))
+    print('2:', get_day_id_by_ts(1563811200, 0))
+    print('3:', get_ts_by_day_id(20200312, -1))
+    print('4:', get_week_id())
+    print('5:', get_week_start_day_id(0))
+    print('6:', get_week_end_day_id(0))
+    print('7:', get_month_start_day_id(0))
+    print('8:', get_month_end_day_id(-3))
+    print('9:', get_relative_date(datetime.now()))
+    print('10:', get_humanize_time(time.time() - 60, "zh"))
+    print('11:', date_format(time.time()))
 
 ```
 
