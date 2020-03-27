@@ -5,9 +5,9 @@ layout: post
 
 
 
-Hey，My name is **turbobin**，搞过 Python，现在做 Java，目前在深圳工作。
+Hey，My name is **turbobin**，一线码农一枚，写过 COBOL、Java、Python，目前职位是 Python 后端开发工程师。
 
-我喜欢折腾，爱好研究技术。
+我喜欢 coding，爱好研究技术。
 
 我崇尚快速地、持续不断地学习。
 
