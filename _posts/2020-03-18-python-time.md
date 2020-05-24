@@ -33,6 +33,12 @@ def get_day_id(delta=0):
     return day_id
 
 
+def get_day_ttl(self, day_id):
+    """获取某天的剩余时间"""
+    ttl = self.get_ts_by_day_id(day_id) - int(time.time())
+    return ttl
+
+
 def get_day_id_by_ts(ts, delta=0):
     """根据获取时间戳day_id"""
     dt = datetime.fromtimestamp(ts) + timedelta(days=delta)
@@ -40,9 +46,10 @@ def get_day_id_by_ts(ts, delta=0):
     return day_id
 
 
-def get_ts_by_day_id(day_id, delta=0, clock=0):
-    """获取某一天(整点)的时间戳"""
-    st = time.strptime(str(day_id)+str(clock), "%Y%m%d%H")
+def get_ts_by_day_id(day_id, delta=0, hour=0, minute=0, second=0):
+    """获取某一天(时 分 秒)的时间戳"""
+    dt_format = "%d %d:%d:%d" %(day_id, hour, minute, second)
+    st = time.strptime(dt_format, "%Y%m%d %H:%M:%S")
     ts = time.mktime(st) + 86400 * delta
     return int(ts)
 
@@ -54,9 +61,10 @@ def get_day_id_by_date(date, delta=0):
     return day_id
 
 
-def get_date_by_day_id(day_id, delta=0, clock=0):
-    """获取某一天(整点)的date"""
-    st = time.strptime(str(day_id)+str(clock), "%Y%m%d%H")
+def get_date_by_day_id(day_id, delta=0, hour=0, minute=0, second=0):
+    """获取某一天(时 分 秒)的date"""
+    dt_format = "%d %d:%d:%d" %(day_id, hour, minute, second)
+    st = time.strptime(dt_format, "%Y%m%d %H:%M:%S")
     ts = time.mktime(st) + 86400 * delta
     return datetime.fromtimestamp(ts)
 
