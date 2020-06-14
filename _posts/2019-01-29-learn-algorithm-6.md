@@ -6,7 +6,7 @@ date:       2019-01-29
 author:     turbobin
 header-img: img/post-bg-universe.jpg
 catalog: true
-category: 技术
+category: 算法
 tags:
 
    - [数据结构与算法 ]
@@ -20,7 +20,7 @@ tags:
 ### 实现
 栈可以用数组来实现，也可以用链表来实现。用数组实现的叫**顺序栈**，用链表实现的叫**链式栈**。
 
-栈主要是于要实现**入栈**和**出栈**的功能。下面用 Python 来分别实现一个顺序栈和链式栈：
+栈主要是要实现**入栈**和**出栈**的功能。下面用 Python 来分别实现一个顺序栈和链式栈：
 
 顺序栈：
 ```python

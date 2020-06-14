@@ -6,7 +6,7 @@ date:       2019-02-18
 author:     turbobin
 header-img: img/post-bg-universe.jpg
 catalog: true
-category: 技术
+category: 算法
 tags:
 
    - [数据结构与算法 ]
