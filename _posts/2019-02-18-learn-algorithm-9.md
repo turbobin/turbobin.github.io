@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      9. 算法篇：排序
+title:      9. 算法篇：排序（上）
 subtitle:   极客时间《数据结构与算法之美》学习笔记
 date:       2019-02-18
 author:     turbobin
