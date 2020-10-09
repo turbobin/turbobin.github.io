@@ -2,7 +2,7 @@
 layout:     post
 title:      10. 算法篇：排序（下）
 subtitle:   极客时间《数据结构与算法之美》学习笔记
-date:       2020-09-18
+date:       2019-02-19
 author:     turbobin
 header-img: img/post-bg-universe.jpg
 catalog: true

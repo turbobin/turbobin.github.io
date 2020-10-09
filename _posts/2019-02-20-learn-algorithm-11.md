@@ -2,7 +2,7 @@
 layout:     post
 title:      11. 算法篇：线性排序
 subtitle:   极客时间《数据结构与算法之美》学习笔记
-date:       2020-09-20
+date:       2019-02-20
 author:     turbobin
 header-img: img/post-bg-universe.jpg
 catalog: true
