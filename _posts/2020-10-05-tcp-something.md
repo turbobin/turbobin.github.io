@@ -336,9 +336,9 @@ TCP 拥塞控制主要是四个算法：**1）慢启动**，**2）拥塞避免**
 FACK 全称是 Forward Acknowledgment 算法，这个算法是基于 SACK 的，SACK 是使用了 TCP 扩展字段 ACK 了哪些数据收到了，哪些数据没有收到，这样发送端可以准确的把那些丢掉的包重传，而不是一个个重传，但这样可能又会增加网络拥塞。FACK 用来做重传过程中的拥塞控制。
 
 - 这个算法会把 SACK 中最大的 Sequence Number 保存在 snd.fack 这个变量中，snd.fack 的更新由 ack 带动
-- 定义个 awnd = snd.nxt - snd.fack (snd.nxt指向发送端滑动窗口目录 3 的第一个位置)，这样 awnd 就表示网络上的数据。
-- 如果需要重传数据，那么 awnd = snd.nxt - snd.fack + retran_data ，也就是 awnd 是传出去的数据 + 重传的数据。
-- 触发Fast Recovery 的条件是： ( **( snd.fack – snd.una ) > (3\*MSS)** ) || (dupacks == 3) ) 。这样一来，就不需要等到3个duplicated acks才重传，而是只要sack中的最大的一个数据和ack的数据比较长了（3个MSS），那就触发重传。在整个重传过程中cwnd不变。直到当第一次丢包的snd.nxt<=snd.una（也就是重传的数据都被确认了），然后进入拥塞避免机制。
+- 定义个 `awnd = snd.nxt - snd.fack` (snd.nxt指向发送端滑动窗口目录 3 的第一个位置)，这样 awnd 就表示网络上的数据。
+- 如果需要重传数据，那么 `awnd = snd.nxt - snd.fack + retran_data` ，也就是 awnd 是传出去的数据 + 重传的数据。
+- 触发 Fast Recovery 的条件是： `((snd.fack – snd.una) > (3*MSS)) || (dupacks == 3) ) `。这样一来，就不需要等到 3 个 duplicated acks 才重传，而是只要 sack中的最大的一个数据和 ack 的数据比较长了（3个MSS），那就触发重传。在整个重传过程中cwnd不变。直到当第一次丢包的`snd.nxt<=snd.una`（也就是重传的数据都被确认了），然后进入拥塞避免机制。
 
 ### Reference
 
