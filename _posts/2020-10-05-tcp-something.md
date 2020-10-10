@@ -342,7 +342,7 @@ FACK 全称是 Forward Acknowledgment 算法，这个算法是基于 SACK 的，
 
 ### Reference
 
-- http://www.tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteStateMachineF-2.htm
-- https://coolshell.cn/articles/11564.html
-- https://coolshell.cn/articles/11609.html
-- https://mp.weixin.qq.com/s/6LiZGMt2KRiIoMaLwx-lkQ
+- [TCP Guide](http://www.tcpipguide.com/free/t_TCPOperationalOverviewandtheTCPFiniteStateMachineF-2.htm)
+- [酷壳 - TCP 的那些事儿(上)](https://coolshell.cn/articles/11564.html)
+- [酷壳 - TCP 的那些事儿(下)](https://coolshell.cn/articles/11609.html)
+- [彻底弄懂TCP协议：从三次握手说起](https://mp.weixin.qq.com/s/6LiZGMt2KRiIoMaLwx-lkQ)
