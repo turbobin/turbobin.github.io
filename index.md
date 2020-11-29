@@ -5,32 +5,29 @@ layout: post
 
 
 
-Hey，My name is **turbobin**，一线码农一枚，写过 COBOL、Java、Python，目前职位是 Python 后端开发工程师。
+Hey，my name is **turbobin**，欢迎来到我的博客。
 
-我喜欢 coding，爱好研究技术。
+关于编程，我走了太多弯路，非科班出身，最开始入坑的又是一门非主流编程语言​​，后来意识到了大环境和主流，开启了自学转行之路。好在自学能力还不错，先是自学了 Java，后来又入坑了 Python 语言，成为 Python 爱好者，现在对 Go 语言产生了兴趣。通过持续不断的学习以及对技术的热情，一路摸爬滚打，我现在已经是一名一线互联网成熟的后端工程师了，负责一款亿级用户产品的核心业务开发。
 
-我崇尚快速地、持续不断地学习。
+从编程小白一路走来，除了不断学习提升编程技能，还需要掌握专业的编程基础知识，于是工作之余恶补了操作系统、计算机网络、数据结构与算法等，学的东西多了，于是想到要把学习的技术沉淀下来，于是折腾出了这个博客，一来算是技术学习的积累，二来，如果分享的东西能帮助到其他人，也是一件不错的事情了。
 
-你可以在这里 [👉GitHub·turbobin](https://github.com/turbobin) 找到我。
-如果有什么问题，可以在评论区给我留言，欢迎交流~
+我一直信奉一句话：
 
-### 联系我
+**you always need to find a way out.** 永远不拘泥于现状，时刻寻找突破。
 
-- [turbobin.cao@gmail.com](mailto:turbobin.cao@gmail.com)
-- [turbobin@foxmail.com](mailto:turbobin@foxmail.com)
+技术无止境，我将作终生学习者，持续学习，不断超越！
 
+### 👉联系我
 
+- 我的邮箱：[turbobin@foxmail.com](mailto:turbobin@foxmail.com)
+- 我的 GitHub：[GitHub·turbobin](https://github.com/turbobin) 
 
 
 ### 说明
 
-本博客通过 [Jekyll](http://jekyllrb.com/) 生成，部署在 [Github-Pages](https://pages.github.com)，主题 fork 自 [闫肃的博客](http://yansu.org/)，原主题基于 [3-Jekyll](https://github.com/P233/3-Jekyll) ，非常感谢 [Peiwen Lu](https://github.com/P233) 开发出这么漂亮的主题。
-
-本博客的源码托管在 [Github](https://github.com/turbobin/turbobin.github.io) 上，如果有任何改进意见，欢迎讨论。
-
-
+本博客通过 [Jekyll](https://github.com/P233/3-Jekyll) 生成，经过改版，折腾成了现在的样子，可以方便快速查看过往文章，方便读者可以快速找到感兴趣的内容。
 
 ### 我的公众号
 
-「如暘」
+「曹当家的」
 
