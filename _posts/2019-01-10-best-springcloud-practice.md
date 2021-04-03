@@ -16,7 +16,8 @@ tags:
 ### 可能是最佳的微服务项目结构实践
 
 实际项目开发中经常使用 maven 聚合项目来进行构建，为了保持相对独立性，可按照分层逻辑把各个逻辑层拆开，参考如下：
-![](http://plsbxlixi.bkt.clouddn.com/Ft90tmHTifdODHPJT-kaALOCdqTD)
+
+![image-20210403221241650](https://gitee.com/turbobin_cao/images/raw/master/image-20210403221241650.png)
 
 首先分成三大类：
 
@@ -39,7 +40,8 @@ IEDA 可通过 Ctrl+Alt+Shift+s (或选择 file ->Project Structure) 打开项�
 
 下面来用最佳项目结构来构建基本的 Spring Cloud 项目。
 结构图如下：
- ![](http://plsbxlixi.bkt.clouddn.com/FlPgmj7qnIuj3CQ-Z2rfID4eIzR_)
+
+![1](https://gitee.com/turbobin_cao/images/raw/master/1.png) 
 
 #### 注册中心 (springcloud-microservice-eureka)
 
@@ -132,7 +134,8 @@ eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 ```
 
 启动 EurekaService，访问 http://localhost:6868/
-![](http://plsbxlixi.bkt.clouddn.com/FqDtjSTmkxL7TOL0JEo1ySCQF6cw)
+
+![image-20210403222319003](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222319003.png)
 
 #### 数据准备
 
@@ -153,7 +156,9 @@ CREATE TABLE `items` (
 > 注：这里建表的时候千万不要把表字段命名成 sql 关键字，比如：desc，describe，change，alter 等，否则，mapper 里面自动生成的 sql 语句执行会有很大的坑。
 
 插入一些数据：
-![](http://plsbxlixi.bkt.clouddn.com/FhC3rBdQND-03z8TbyMqNNrpvyS5)
+
+![image-20210403222341784](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222341784.png)
+
 **2. 创建订单库表**
 
 ```sql
@@ -168,7 +173,8 @@ CREATE TABLE `orders` (
 ```
 
 插入一些数据：
-![](http://plsbxlixi.bkt.clouddn.com/FngyvvBuDliBhEU5b4DmE_CKDfTx)
+
+![image-20210403222415432](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222415432.png)
 
 **3. 订单详情：**
 
@@ -182,7 +188,8 @@ CREATE TABLE `order_details` (
 ```
 
 关联订单和商品数据：
-![](http://plsbxlixi.bkt.clouddn.com/FqVtQsqEE0qgM4zn4QVZeWrvbJH9)
+
+![image-20210403222431782](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222431782.png)
 
 #### 服务提供者 (springcloud-microservice-provider)
 
@@ -278,6 +285,7 @@ CREATE TABLE `order_details` (
 ```
 
 **2. common-api：使用插件自动创建 items 表实体类和 mapper 类**
+
 pom.xml
 
 ```xml
@@ -353,11 +361,17 @@ pom.xml
 ```
 
 ② 点击工具栏上的 Run——EditConfigrations,点+，选择 maven
-![](http://plsbxlixi.bkt.clouddn.com/FqDWsFjjDuE-egYCb48WbIdLqrlV)
+
+![image-20210403222504722](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222504722.png)
+
 ③ 选择名称，点击运行：
-![](http://plsbxlixi.bkt.clouddn.com/Ftnu8Xxulv9Jtw0vgJJGhTzqlh9E)
+
+![image-20210403222517525](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222517525.png)
+
 运行成功后生成了 Item.java，ItemMapper.java，ItemMapper.xml
+
 **3. service-inf：把 common-api 依赖进来**
+
 ① pom.xml
 
 ```xml
@@ -406,6 +420,7 @@ public interface ItemService {
 ```
 
 **4. service-impl：把 service-inf 依赖进来**
+
 ① pom.xml:
 
 ```xml
@@ -450,7 +465,8 @@ public interface ItemService {
 
 ② 创建 ItemServiceImpl
 
-这里可以直接导入 common-api 中的包，为什么呢？  
+这里可以直接导入 common-api 中的包，为什么呢？
+
 这是因为 maven 的可传递性依赖。比如 C 依赖 B，B 依赖 A，那么 C 可以同时使用 B 和 A 中的包。
 
 ```java
@@ -646,15 +662,22 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 
 **6. 测试**
 启动注册中心 EurekaService，和 ItemApplication
-![](http://plsbxlixi.bkt.clouddn.com/FqN0t6eHx1Ujk4ci-FyPfHILRDyb)
+
+![image-20210403222619471](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222619471.png)
+
 使用浏览器测试：
 查看 Eureka 监控，可见已经注册成功了。
-![](http://plsbxlixi.bkt.clouddn.com/Fm-AbPye98exT41Mj6_UW33W3HJO)
+
+![image-20210403222638664](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222638664.png)
+
 测试商品查询：
-![](http://plsbxlixi.bkt.clouddn.com/FqsBiKd7jEIKjBHq8eTWBjDkg3UX)
+
+![image-20210403222654345](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222654345.png)
 
 测试成功。但是发现响应数据变成了 xml 格式。
+
 这是因为我们引入了 eureka server 的依赖，导致破坏了之前 SpringMVC 默认的配置，从而导致了响应成了 xml。
+
 解决方法：启动类中排除 eureka server 中的 xml 依赖，如下：
 
 ```xml
@@ -673,11 +696,14 @@ mybatis.type-aliases-package=com.ccb.springcloud.provider.common.model
 ```
 
 重启 ItemService，再次测试：
-![](http://plsbxlixi.bkt.clouddn.com/Fhmcs3pLLoG0XeV7xwOxZPIrNxAT)
+
+![image-20210403222723075](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222723075.png)
 
 最后来看一下整个项目的结构：
-![](http://plsbxlixi.bkt.clouddn.com/FjvomzgG4UhkZ-xaE3tRGEwTnjPm)
-![](http://plsbxlixi.bkt.clouddn.com/FvMCHxPxeLNLV1oxmYR6JKFomwLu)
+
+![image-20210403222749711](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222749711.png)
+
+![image-20210403222800597](https://gitee.com/turbobin_cao/images/raw/master/image-20210403222800597.png)
 
 #### 服务消费者 (springcloud-microservice-eureka)
 
@@ -1240,17 +1266,24 @@ mybatis.type-aliases-package=com.ccb.springcloud.comsumer.common.model
 ```
 
 6.启动测试
-![](http://plsbxlixi.bkt.clouddn.com/FpDcmCIhgqVf_v-vQJ8x94_upDCo)
+
+![image-20210403223256429](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223256429.png)
+
 Eureka 注册成功
-![](http://plsbxlixi.bkt.clouddn.com/FvL1Nj5jibYETyVHPg1Rts9fdTCA)
+
+![image-20210403223331863](C:\Users\turbobin\AppData\Roaming\Typora\typora-user-images\image-20210403223331863.png)
+
 浏览器测试，可见对应的商品信息也查出来了
-![](http://plsbxlixi.bkt.clouddn.com/FkLYJXKHDXn_638gy9Vu2yUupxNY)
+
+![image-20210403223359856](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223359856.png)
 
 最后来看一下项目结构，和服务提供者差不多：
-![](http://plsbxlixi.bkt.clouddn.com/FmWEnL0p0-qRWUTnYuUV5q1-r45v)
-![](http://plsbxlixi.bkt.clouddn.com/FiJ3EBSgwoHXvtLeIHWRKDfdnLQg)
+![image-20210403223409766](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223409766.png)
 
-#### Eureka集群
+![image-20210403223433587](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223433587.png)
+
+Eureka集群
+
 前面的测试发现，Eureka是一个单点服务，在生产环境容易发生单点故障，为了确保服务的高可用，我们需要搭建 Eureka集群。
 
 思路：Eureka 本身作为一个服务，提供注册的功能，如果启动多个 Eureka服务，彼此之间互相注册，就形成了一个集群。
@@ -1292,10 +1325,13 @@ eureka.client.fetchRegistry=true
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 ```
 * 查看结果:
-  ![](http://plsbxlixi.bkt.clouddn.com/Fmbygx3TqhE8aM0b-JC-Tr06y7jS)
-  ![](http://plsbxlixi.bkt.clouddn.com/FpQ9qzMPr-8t0z80KacIVJ35PSyP)
+
+  ![image-20210403223536750](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223536750.png)
+
+  ![image-20210403223546044](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223546044.png)
 
 #### 将服务注册到 Eureka 集群
+
 修改配置文件，只需要添加集群的地址，用逗号隔开:
 
 ```
@@ -1303,7 +1339,9 @@ eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:6868/eureka/,http://127.0.0.1:6869/eureka/
 ```
 访问 http://localhost:6868/ 和  http://localhost:6869/ 
-![](http://plsbxlixi.bkt.clouddn.com/FmoqUvKR_8QgxIvP465gPyfQcEe4)
+
+![image-20210403223630684](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223630684.png)
+
 发现在Eureka的两个Server中都注册对应的商品和订单服务。
 
 可以尝试关闭一个 Eureka 服务，看订单服务是否能调用成功。
