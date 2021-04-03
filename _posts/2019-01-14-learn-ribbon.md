@@ -25,12 +25,14 @@ tags:
 Ribbon 是 Netflix 发布的负载均衡器 , 它有助于控制 HTTP 和 TCP 客户端的行为. 为 Ribbon 配置服务提供者地址列表后,Ribbon 就可基于某种负载均衡算法,自动帮助服务消费者去请求. Ribbon 默认为我们提供了很多的负载均衡算法,例如轮询,随机等. 当然,我们也可以为 Ribbon 实现自定义的负载均衡算法.
 
 #### 实现架构
-![](http://plsbxlixi.bkt.clouddn.com/FvhcWfz-H28TJrVo_nL_QxlW7gCc)
+![image-20210403225908302](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225908302.png)
 
 #### 使用 Ribbon
+
 添加依赖：
 spring-cloud-starter-netflix-eureka-server 中已经包含了 ribbon，故不需要再重复引入。
-![](http://plsbxlixi.bkt.clouddn.com/Fi6dTsZyC9qacHbsU0dEa-doTv20)
+
+![image-20210403225920128](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225920128.png)
 
 在 RestTemplate 设置 @LoadBalanced 注解：
 
@@ -48,7 +50,8 @@ public class OrderApplication {
 
 #### 测试负载均衡
 启动两个 springcloud-microservice-item（注意修改端口）
-![](http://plsbxlixi.bkt.clouddn.com/Flz750EQrlyhmj6p0keSZgNzWAxq)
+
+![image-20210403225939501](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225939501.png)
 
 引入 Spring Boot 单元测试依赖：
 
@@ -88,7 +91,9 @@ public class LoadBalanceTest {
 
 ```
 启动，查看测试结果：
-![](http://plsbxlixi.bkt.clouddn.com/FpX7Vx7bdSAg4NxZCnz_DjN6ArSC)
+
+![image-20210403225957328](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225957328.png)
+
 可见 Ribbon 中默认的负载均衡算法是轮询。
 
 如果要设置负载均衡为随机，需要修改配置文件：
@@ -99,7 +104,8 @@ springcloud-microservice-item.ribbon.NFLoadBalancerRuleClassName=com.netflix.loa
 ```
 
 再次测试：
-![](http://plsbxlixi.bkt.clouddn.com/FsbcY9lf8kWNStPbZNU5SpZJ_Ai2)
+
+![image-20210403230013609](https://gitee.com/turbobin_cao/images/raw/master/image-20210403230013609.png)
 
 可见都是随机调用的了。
 

@@ -1271,7 +1271,7 @@ mybatis.type-aliases-package=com.ccb.springcloud.comsumer.common.model
 
 Eureka 注册成功
 
-![image-20210403223331863](C:\Users\turbobin\AppData\Roaming\Typora\typora-user-images\image-20210403223331863.png)
+![image-20210403223331863](https://gitee.com/turbobin_cao/images/raw/master/image-20210403223331863.png)
 
 浏览器测试，可见对应的商品信息也查出来了
 

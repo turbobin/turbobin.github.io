@@ -189,45 +189,47 @@ public class Application {
 ② 在dubbo官方文档的推荐用法中，其实不推荐使用dubbo.properties，而推荐使用对应的xml配置：
 
 **dubbo.properties 中属性名与 XML 的对应关系**
+
 <ol>
 <li>
 <p>应用名 <code>dubbo.application.name</code></p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:application</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myalibaba"</span> &gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:application</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"myalibaba"</span> &gt;</span>
 </code></pre>
 </li>
 <li>
 <p>注册中心地址 <code>dubbo.registry.address</code></p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:registry</span> <span class="hljs-attr">address</span>=<span class="hljs-string">"11.22.33.44:9090"</span> &gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:registry</span> <span class="hljs-attr">address</span>=<span class="hljs-string">"11.22.33.44:9090"</span> &gt;</span>
 </code></pre>
 </li>
 <li>
 <p>调用超时 <code>dubbo.service.*.timeout</code></p>
 <p>可以在多个配置项设置超时 <code>timeout</code>，由上至下覆盖（即上面的优先）<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>，其它的参数（<code>retries</code>、<code>loadbalance</code>、<code>actives</code>等）的覆盖策略与 <code>timeout</code> 相同。示例如下：</p>
 <p>提供者端特定方法的配置</p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:service</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> &gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:service</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> &gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">dubbo:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"findPerson"</span> <span class="hljs-attr">timeout</span>=<span class="hljs-string">"1000"</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dubbo:service</span>&gt;</span>
 </code></pre>
 <p>提供者端特定接口的配置</p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:service</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> <span class="hljs-attr">timeout</span>=<span class="hljs-string">"200"</span> /&gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:service</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> <span class="hljs-attr">timeout</span>=<span class="hljs-string">"200"</span> /&gt;</span>
 </code></pre>
 </li>
 <li>
 <p>服务提供者协议 <code>dubbo.service.protocol</code>、服务的监听端口 <code>dubbo.service.server.port</code></p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:protocol</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dubbo"</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"20880"</span> /&gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:protocol</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dubbo"</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"20880"</span> /&gt;</span>
 </code></pre>
 </li>
 <li>
 <p>服务线程池大小 <code>dubbo.service.max.thread.threads.size</code></p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:protocol</span> <span class="hljs-attr">threads</span>=<span class="hljs-string">"100"</span> /&gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:protocol</span> <span class="hljs-attr">threads</span>=<span class="hljs-string">"100"</span> /&gt;</span>
 </code></pre>
 </li>
 <li>
 <p>消费者启动时，没有提供者是否抛异常 <code>alibaba.intl.commons.dubbo.service.allow.no.provider</code></p>
-<pre><code class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:reference</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> <span class="hljs-attr">check</span>=<span class="hljs-string">"false"</span> /&gt;</span>
+<pre><code class="highlight"><span class="hljs-tag">&lt;<span class="hljs-name">dubbo:reference</span> <span class="hljs-attr">interface</span>=<span class="hljs-string">"com.alibaba.xxx.XxxService"</span> <span class="hljs-attr">check</span>=<span class="hljs-string">"false"</span> /&gt;</span>
 </code></pre>
 </li>
 </ol>
+
 
 
 **推荐阅读：**

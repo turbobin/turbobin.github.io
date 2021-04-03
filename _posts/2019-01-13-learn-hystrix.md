@@ -19,7 +19,8 @@ tags:
 在微服务架构中，存在这么多的服务单元，若一个单元出现故障，就很容易因依赖关系引发故障蔓延，最终导致整个系统瘫痪， 这种现象被称之为为雪崩效应。服务雪崩效应是一种因“服务提供者”的不可用导致“服务消费者”的不可用，并将不可用逐渐放大的过程。
 
 如下图所示：A 作为服务提供者，B 为 A 的服务消费者，C 和 D 是 B 的服务消费者。A 不可用引起了 B 的不可用，并将不可用像滚雪球一样放大到 C 和 D 时，雪崩效应就形成了。
-![](http://plsbxlixi.bkt.clouddn.com/FiVMYQNFyqMvNwbq9msy0G-BbsUr)
+
+![image-20210403225649514](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225649514.png)
 
 这样的架构相交于传统架构更加的不稳定. 为了解决这样的问题，就产生了断路器等一系列的服务保护机制.
 
@@ -27,7 +28,9 @@ tags:
 
 #### Hystrix 简介
 目前 Hystrix 项目也在 github 上托管: [https://github.com/Netflix/Hystrix/](https://github.com/Netflix/Hystrix/)
-![](http://plsbxlixi.bkt.clouddn.com/FvMBYSE5yHNg6SFv8C_R9WPWkff9)
+
+![image-20210403225705072](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225705072.png)
+
 Hystrix 是由 Netflix 开源的一个延迟和容错库，用于隔离访问远程系统，服务或者第三方库，防止级联失败， 在复杂的分布式系统中实现恢复能力，从而提升系统的可用性和容错性. Hystrix 主要通过以下几点实现延迟和容错:
 
 * **包裹请求**: 使用 HystrixCommand 包裹对依赖的调用逻辑 ， 每一个命令在独立的线程中执行. 
@@ -39,11 +42,11 @@ Hystrix 是由 Netflix 开源的一个延迟和容错库，用于隔离访问远
 #### 原理说明
 正常请求:
 
-![](http://plsbxlixi.bkt.clouddn.com/Ft0c7KaJOyiTOpG35TqcMs7txZAT)
+![image-20210403225723557](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225723557.png)
 
 当对特定服务的呼叫达到一定阈值时（Hystrix 中的默认值为 5 秒内的 20 次故障），电路打开，不进行通讯。并且是一个隔离的线程中进行的。
 
-![](http://plsbxlixi.bkt.clouddn.com/FmwUVSIYTHqMNJvSZKCwRIhku6ES)
+![image-20210403225733496](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225733496.png)
 
 #### 快速入门
 
@@ -125,13 +128,18 @@ public class OrderApplication {
 ```
 重启测试
 先测试正常数据：
-![](http://plsbxlixi.bkt.clouddn.com/FikygNO_Gfoiu_YdRgAx-ixVz9yT)
+
+![image-20210403225748971](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225748971.png)
+
 把 ItemApplication 停掉，再次测试：
-![](http://plsbxlixi.bkt.clouddn.com/FtNemzj9Bjd1Hv4ccpAckSL5Eoaf)
+
+![image-20210403225759813](https://gitee.com/turbobin_cao/images/raw/master/image-20210403225759813.png)
+
 返回了自定义的友好信息。
 
 #### 需注意的问题：
 `@HystrixCommand` 注解必须加在 Service 类的一级方法上才能生效，加在内部调用的方法上是无效的。
+
 举个栗子：
 
 ```java
