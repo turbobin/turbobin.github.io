@@ -31,6 +31,6 @@ tags:
 
 后端架构基本如下：
 
-![后端架构图](https://gitee.com/turbobin_cao/images/raw/master/后端架构图.png)
+![后端架构图](https://github.com/turbobin-cao/images/raw/main/后端架构图.png)
 
 C 端用通过 App 发送请求，经过域名解析到离地域最近的机器，经过Nginx转发，通过内网转发到对应的业务机器集群，集群选择一台机器处理请求，通过 uwsgi 连接 Python 框架，Python 操作数据库、缓存或队列后返回对应的数据给请求端。

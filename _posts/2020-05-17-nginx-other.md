@@ -105,24 +105,24 @@ Context: server
 
 - vmstat 命令
 
-  ![image-20200510131140845](https://gitee.com/turbobin_cao/images/raw/master/image-20200510131140845.png)
+  ![image-20200510131140845](https://github.com/turbobin-cao/images/raw/main/image-20200510131140845.png)
 
 - dstat （需要 yum install dstat）
 
-  ![image-20200510131029662](https://gitee.com/turbobin_cao/images/raw/master/image-20200510131029662.png)
+  ![image-20200510131029662](https://github.com/turbobin-cao/images/raw/main/image-20200510131029662.png)
 
 - pidstat -w
 
-  ![image-20200510130548142](https://gitee.com/turbobin_cao/images/raw/master/image-20200510130548142.png)
+  ![image-20200510130548142](https://github.com/turbobin-cao/images/raw/main/image-20200510130548142.png)
 
-  ![image-20200510131557737](https://gitee.com/turbobin_cao/images/raw/master/image-20200510131557737.png)
+  ![image-20200510131557737](https://github.com/turbobin-cao/images/raw/main/image-20200510131557737.png)
 
 **什么决定 CPU 时间片的大小**
 
 - Nice 静态优先级：-20 ~ 19
 - Priority 动态优先级：0 ~ 139
 
-![image-20200510132144253](https://gitee.com/turbobin_cao/images/raw/master/image-20200510132144253.png)
+![image-20200510132144253](https://github.com/turbobin-cao/images/raw/main/image-20200510132144253.png)
 
 #### 设置 worker 进程的静态优先级
 
@@ -145,7 +145,7 @@ Contex: main
 
 **TCP 连接过程**
 
-![image-20200510142057075](https://gitee.com/turbobin_cao/images/raw/master/image-20200510142057075.png)
+![image-20200510142057075](https://github.com/turbobin-cao/images/raw/main/image-20200510142057075.png)
 
 **SYN_SENT 状态**
 
@@ -165,7 +165,7 @@ Contex: main
 
 **服务端处理三次握手**
 
-![image-20200510143211699](https://gitee.com/turbobin_cao/images/raw/master/image-20200510143211699.png)
+![image-20200510143211699](https://github.com/turbobin-cao/images/raw/main/image-20200510143211699.png)
 
 **SYN 攻击**
 

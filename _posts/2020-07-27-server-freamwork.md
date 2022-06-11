@@ -193,7 +193,7 @@ tags:
 
 #### B + Tree
 
-![image-20200808183234347](https://gitee.com/turbobin_cao/images/raw/master/image-20200808183234347.png)
+![image-20200808183234347](https://github.com/turbobin-cao/images/raw/main/image-20200808183234347.png)
 
 **数据库的索引** 使用 B+ 树结构，B+ 树是一种 N 叉排序树，树的每个节点包含 N 个数据，这些数据按顺序排列。两个数据之间是一个指向子节点的指针，而子节点的数据则在这两个数据大小之间。
 
@@ -205,7 +205,7 @@ B + 树的节点存储在磁盘上，如果每个节点存储 1000 多个数据�
 
 聚簇索引的数据记录和索引记录存储在一起，也就是叶子节点包含了完整的数据记录，查找记录只需要对树进行搜索，查找到 key 也就查到了完整的数据。MySQL InnoDB 的主键就是这种聚簇索引，主键 ID 和所在的记录行存储在一起。
 
-![image-20200808183536831](https://gitee.com/turbobin_cao/images/raw/master/image-20200808183536831.png)
+![image-20200808183536831](https://github.com/turbobin-cao/images/raw/main/image-20200808183536831.png)
 
 InnoDB 建表后创建的文件：
 
@@ -218,7 +218,7 @@ InnoDB 建表后创建的文件：
 
 非聚簇索引即索引文件和数据文件分开存储。不管是主索引还是辅助索引，B+ 树的叶子节点存储的都是对应数据的物理地址。拿到这个物理地址后，就可以到数据文件中直接定位到具体的数据记录了。MyISAM 引擎就是这种非聚集索引的实现方式。
 
-![image-20200808183912651](https://gitee.com/turbobin_cao/images/raw/master/image-20200808183912651.png)
+![image-20200808183912651](https://github.com/turbobin-cao/images/raw/main/image-20200808183912651.png)
 
 MyISAM 创建表后生成的文件有：
 
@@ -482,7 +482,7 @@ web 应用架构的演进过程就是一个不断进行职责分离，实现单�
 
 MySQL 的主从复制，顾名思义，就是将 MySQL 主数据库中的数据复制到从数据库中去，主要原理是：当应用程序客户端发送一条更新命令到主数据库时，数据库会把这条更新命令同步记录到 binlog 中，然后由另外一个线程从 binlog 中读取日志，通过远程通讯的方式将它复制到从服务器上去，从服务器获得这条更新日志后，将其加入到自己的 Relay log 中，然后由另外一个 SQL 执行线程从 Relay log 中读取这条新的日志，并把它在本地数据库这种重新执行一遍。
 
-![image-20200808190141402](https://gitee.com/turbobin_cao/images/raw/master/image-20200808190141402.png)
+![image-20200808190141402](https://github.com/turbobin-cao/images/raw/main/image-20200808190141402.png)
 
 以上MySQL 主从复制主要涉及三个线程：binlog 线程、I/O 线程和 SQL 线程。
 

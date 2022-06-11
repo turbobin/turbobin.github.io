@@ -92,9 +92,9 @@ hash 算法引发的问题：当宕机或者扩容时，hash 算法引发大量�
 
 一致性hash 算法：将服务器均匀的分配在一个 0 ~ 2^32  的 hash 环上，hash 后的值沿顺时针分配在离的最近的服务器节点上。当宕机或扩容时，在任意两个服务器之间添加一个节点，那么只会影响两个服务器之间的哈希节点值，而对其他服务器节点没有影响。
 
-![image-20200502232808681](https://gitee.com/turbobin_cao/images/raw/master/image-20200502232808681.png)
+![image-20200502232808681](https://github.com/turbobin-cao/images/raw/main/image-20200502232808681.png)
 
-![image-20200502232831008](https://gitee.com/turbobin_cao/images/raw/master/image-20200502232831008.png)
+![image-20200502232831008](https://github.com/turbobin-cao/images/raw/main/image-20200502232831008.png)
 
 ### 优先选择最少连接的上游服务器
 
@@ -129,11 +129,11 @@ hash 算法引发的问题：当宕机或者扩容时，hash 算法引发大量�
 
 ### HTTP 反向代理流程
 
-![image-20200503185243834](https://gitee.com/turbobin_cao/images/raw/master/image-20200503185243834.png)
+![image-20200503185243834](https://github.com/turbobin-cao/images/raw/main/image-20200503185243834.png)
 
 ### proxy模块：proxy_pass 指令
 
-![image-20200503121156426](https://gitee.com/turbobin_cao/images/raw/master/image-20200503121156426.png)
+![image-20200503121156426](https://github.com/turbobin-cao/images/raw/main/image-20200503121156426.png)
 
 **示例：**
 
@@ -258,11 +258,11 @@ server {
 
 **发起请求部分**
 
-![image-20200503221759805](https://gitee.com/turbobin_cao/images/raw/master/image-20200503221759805.png)
+![image-20200503221759805](https://github.com/turbobin-cao/images/raw/main/image-20200503221759805.png)
 
 **接收上游响应**
 
-![image-20200503221849269](https://gitee.com/turbobin_cao/images/raw/master/image-20200503221849269.png)
+![image-20200503221849269](https://github.com/turbobin-cao/images/raw/main/image-20200503221849269.png)
 
 ### 清除缓存模块
 
@@ -291,33 +291,33 @@ http://nginx.org/en/docs/http/ngx_http_scgi_module.html
 
 **构造请求内容**
 
-![image-20200503222936211](https://gitee.com/turbobin_cao/images/raw/master/image-20200503222936211.png)
+![image-20200503222936211](https://github.com/turbobin-cao/images/raw/main/image-20200503222936211.png)
 
 **建立连接并发送请求**
 
-![image-20200503223022166](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223022166.png)
+![image-20200503223022166](https://github.com/turbobin-cao/images/raw/main/image-20200503223022166.png)
 
 **接收上游响应**
 
-![image-20200503223109325](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223109325.png)
+![image-20200503223109325](https://github.com/turbobin-cao/images/raw/main/image-20200503223109325.png)
 
 **转发响应**
 
-![image-20200503223143942](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223143942.png)
+![image-20200503223143942](https://github.com/turbobin-cao/images/raw/main/image-20200503223143942.png)
 
 **SSL相关**
 
-![image-20200503223215936](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223215936.png)
+![image-20200503223215936](https://github.com/turbobin-cao/images/raw/main/image-20200503223215936.png)
 
 **缓存类指令**
 
-![image-20200503223250780](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223250780.png)
+![image-20200503223250780](https://github.com/turbobin-cao/images/raw/main/image-20200503223250780.png)
 
-![image-20200503223307188](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223307188.png)
+![image-20200503223307188](https://github.com/turbobin-cao/images/raw/main/image-20200503223307188.png)
 
 **独有配置**
 
-![image-20200503223342827](https://gitee.com/turbobin_cao/images/raw/master/image-20200503223342827.png)
+![image-20200503223342827](https://github.com/turbobin-cao/images/raw/main/image-20200503223342827.png)
 
 ### memcached 反向代理
 
@@ -342,7 +342,7 @@ http://nginx.org/en/docs/http/ngx_http_scgi_module.html
 
 **memcached 指令**
 
-![image-20200503235708467](https://gitee.com/turbobin_cao/images/raw/master/image-20200503235708467.png)
+![image-20200503235708467](https://github.com/turbobin-cao/images/raw/main/image-20200503235708467.png)
 
 **示例：**
 
@@ -380,13 +380,13 @@ location / {
 
 **HTTP 协议升级为 websocket**
 
-![image-20200504110311249](https://gitee.com/turbobin_cao/images/raw/master/image-20200504110311249.png)
+![image-20200504110311249](https://github.com/turbobin-cao/images/raw/main/image-20200504110311249.png)
 
 **websocket 测试工具：**
 
 http://www.websocket.org/echo.html
 
-![image-20200504110854381](https://gitee.com/turbobin_cao/images/raw/master/image-20200504110854381.png)
+![image-20200504110854381](https://github.com/turbobin-cao/images/raw/main/image-20200504110854381.png)
 
 配置nginx
 
@@ -415,7 +415,7 @@ server {
 
 **slice 模块的运行流程**
 
-![image-20200504113411000](https://gitee.com/turbobin_cao/images/raw/master/image-20200504113411000.png)
+![image-20200504113411000](https://github.com/turbobin-cao/images/raw/main/image-20200504113411000.png)
 
 **示例：**
 
@@ -543,9 +543,9 @@ server {
 
 **grpc 指令对照表**
 
-![image-20200504142109909](https://gitee.com/turbobin_cao/images/raw/master/image-20200504142109909.png)
+![image-20200504142109909](https://github.com/turbobin-cao/images/raw/main/image-20200504142109909.png)
 
-![image-20200504142152061](https://gitee.com/turbobin_cao/images/raw/master/image-20200504142152061.png)
+![image-20200504142152061](https://github.com/turbobin-cao/images/raw/main/image-20200504142152061.png)
 
 **示例：**
 
@@ -571,19 +571,19 @@ server {
 
 **请求处理的 7 个阶段：**
 
-![image-20200504145725010](https://gitee.com/turbobin_cao/images/raw/master/image-20200504145725010.png)
+![image-20200504145725010](https://github.com/turbobin-cao/images/raw/main/image-20200504145725010.png)
 
 **传输层相关变量：**
 
-![image-20200504145837118](https://gitee.com/turbobin_cao/images/raw/master/image-20200504145837118.png)
+![image-20200504145837118](https://github.com/turbobin-cao/images/raw/main/image-20200504145837118.png)
 
-![image-20200504145859969](https://gitee.com/turbobin_cao/images/raw/master/image-20200504145859969.png)
+![image-20200504145859969](https://github.com/turbobin-cao/images/raw/main/image-20200504145859969.png)
 
-![image-20200504145939411](https://gitee.com/turbobin_cao/images/raw/master/image-20200504145939411.png)
+![image-20200504145939411](https://github.com/turbobin-cao/images/raw/main/image-20200504145939411.png)
 
 **Nginx 系统变量：**
 
-![image-20200504150021827](https://gitee.com/turbobin_cao/images/raw/master/image-20200504150021827.png)
+![image-20200504150021827](https://github.com/turbobin-cao/images/raw/main/image-20200504150021827.png)
 
 **示例：**
 
@@ -647,13 +647,13 @@ stream 模块建立的 TCP 连接是端到端的，如果中间加了 CDN 代理
 
 **proxy_protocol 协议：**
 
-![image-20200504185653936](https://gitee.com/turbobin_cao/images/raw/master/image-20200504185653936.png)
+![image-20200504185653936](https://github.com/turbobin-cao/images/raw/main/image-20200504185653936.png)
 
 超时控制：`proxy_protocol_timeout time;` 默认 30 s
 
 **stream 处理 proxy_protocol 流程：**
 
-![image-20200504185905902](https://gitee.com/turbobin_cao/images/raw/master/image-20200504185905902.png)
+![image-20200504185905902](https://github.com/turbobin-cao/images/raw/main/image-20200504185905902.png)
 
 ### post_accept  阶段： realip 模块
 
@@ -667,11 +667,11 @@ stream 模块建立的 TCP 连接是端到端的，如果中间加了 CDN 代理
 
 **反向代理指令对照表**
 
-![image-20200504214024999](https://gitee.com/turbobin_cao/images/raw/master/image-20200504214024999.png)
+![image-20200504214024999](https://github.com/turbobin-cao/images/raw/main/image-20200504214024999.png)
 
 **stream ssl 指令对照表**
 
-![image-20200504214119706](https://gitee.com/turbobin_cao/images/raw/master/image-20200504214119706.png)
+![image-20200504214119706](https://github.com/turbobin-cao/images/raw/main/image-20200504214119706.png)
 
 ### UDP 反向代理
 

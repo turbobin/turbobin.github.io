@@ -13,7 +13,7 @@ tags:
 
 ### TCP 知识点概览
 
-![TCP技术](https://gitee.com/turbobin_cao/images/raw/master/TCP+技术.png)
+![TCP技术](https://github.com/turbobin-cao/images/raw/main/TCP+技术.png)
 
 ### TCP 头格式
 
@@ -224,9 +224,9 @@ window 是一个 16 bit位的字段，代表是窗口的字节容量，大小为
 
 如图所示，假如收到了 36 的 ACK，那么窗口向后滑动 5 个 byte
 
-![image-20200917234941351](https://gitee.com/turbobin_cao/images/raw/master/image-20200917234941351.png)
+![image-20200917234941351](https://github.com/turbobin-cao/images/raw/main/image-20200917234941351.png)
 
-![image-20200917235025278](https://gitee.com/turbobin_cao/images/raw/master/image-20200917235025278.png)
+![image-20200917235025278](https://github.com/turbobin-cao/images/raw/main/image-20200917235025278.png)
 
 #### 零窗口问题
 

@@ -15,11 +15,11 @@ tags:
 
 有多个 Excel 文件，需要把里面的同一句文案的多个不同语言版本放在一起。
 
-![](https://gitee.com/turbobin_cao/images/raw/master/20200311193044.png)
+![](https://github.com/turbobin-cao/images/raw/main/20200311193044.png)
 
 其中部分 Excel 内容是这样的：
 
-![](https://gitee.com/turbobin_cao/images/raw/master/20200311193858.png)
+![](https://github.com/turbobin-cao/images/raw/main/20200311193858.png)
 
 每个 Excel 有多个子 table，且每个 table 格式都是一样的，每个语言版本的文案顺序是一样的。
 

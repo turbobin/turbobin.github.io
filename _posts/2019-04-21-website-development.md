@@ -20,7 +20,7 @@ tags:
 
 最初的小型网站采用 LMAP（Linux + MySQL + Apache + PHP/Python）架构，应用程序、数据库、文件等所有资源都部署在一台服务器上。
 
-![](https://gitee.com/turbobin_cao/images/raw/master/20200310225503.png)
+![](https://github.com/turbobin-cao/images/raw/main/20200310225503.png)
 
 ### 应用服务和数据服务分离
 
